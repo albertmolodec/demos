@@ -12,9 +12,12 @@
     <title>Web component</title>
   </head>
   <body>
-    <h1>Тестовое задание «Карточка пользователя»</h1>
+    <h1>
+      Тестовое задание
+      <a href="https://github.com/albertmolodec/demos/tree/main/web-component">«Карточка пользователя»</a>
+    </h1>
 
-    <p>Веб-компонент отображает карточку пользователя. В ней есть имя, фамилия, возраст и фотография.</p>
+    <p>Веб-компонент отображает карточку пользователя. Она содержит имя, фамилию, возраст и фотографию.</p>
 
     <p>
       Все данные, необходимые для отображения, передаются в компонент с помощью HTML-атрибутов кастомного HTML-тэга
@@ -48,17 +51,57 @@
     <div class="show">
       <user-card></user-card>
       <pre>
-    <code>
-      &lt;user-card>&lt;/user-card>
-    </code>
+  <code>
+    &lt;user-card>&lt;/user-card>
+  </code>
   </pre>
     </div>
 
     <h2>Комментарии</h2>
     <p>
       React и ReactDOM импортируется в JS-модуль <code>user-card.js</code> через
-      <a href="https://www.skypack.dev/">Skypack</a>. Я выбрал CDN, чтобы не тратить время на установку пакетов и бандлинг.
+      <a href="https://www.skypack.dev/">Skypack</a>. Я выбрал CDN, чтобы не тратить время на установку пакетов и
+      сборку.
     </p>
+
+    <p>
+      Я создал класс <code>UserCard</code> и определил его для кастомного HTML-элемента
+      <code>&lt;user-card>&lt;/user-card></code>. Когда браузер заканчивает обрабатывать Javascript и создает инстанс
+      класса <code>UserCard</code>, вызывается метод <code>connectedCallback</code>. В нем создается теневое DOM-дерево,
+      куда сразу добавляются CSS-правила для компонента. Затем из кастомного тега <code>user-card</code> извлекаются
+      атрибуты, и на их основе из шаблона создается HTML-разметка с данными. Метод
+      <code>ReactDOM.render()</code> добавляет получившийся узел в shadowRoot. Готово, компонент создан и отрисован на
+      странице.
+    </p>
+
+    <p>
+      Условие задачи содержало требование «При изменении атрибутов элемента карточка обновляется в реальном времени». Я
+      реализовал это поведение при помощи методов <code>attributeChangedCallback</code> и
+      <code>observedAttributes</code>. Если у кастомного элемента изменить или удалить атрибут, это мгновенно
+      отобразится на экране.
+    </p>
+
+    <figure>
+      <video controls="true" src="./media/edit-age.mov"></video>
+      <figcaption>Изменение атрибута «Возраст»</figcaption>
+    </figure>
+
+    <figure>
+      <video controls="true" src="./media/edit-image-source.mov"></video>
+      <figcaption>Изменение адреса изображения</figcaption>
+    </figure>
+
+    <p>Атрибуты можно не только изменять, но и удалять и добавлять.</p>
+
+    <figure>
+      <video controls="true" src="./media/add-attribute.mov"></video>
+      <figcaption>Добавление атрибута</figcaption>
+    </figure>
+
+    <figure>
+      <video controls="true" src="./media/remove-attribute.mov"></video>
+      <figcaption>Удаление атрибута</figcaption>
+    </figure>
 
     <h2>Проблемы</h2>
     <p>
