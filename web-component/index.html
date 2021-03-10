@@ -11,33 +11,19 @@
   <body>
     <h1>User card</h1>
 
-    <user-card name="Albert" surname="Works" age="24" imageSrc="./avatar.png"></user-card>
-
-    <p
-      class="codepen"
-      data-height="600"
-      data-theme-id="light"
-      data-default-tab="html,result"
-      data-user="albertmolodec"
-      data-slug-hash="RwoqjYv"
-      style="
-        height: 600px;
-        box-sizing: border-box;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid;
-        margin: 1em 0;
-        padding: 1em;
-      "
-      data-pen-title="User card (web component)"
-    >
-      <span
-        >See the Pen <a href="https://codepen.io/albertmolodec/pen/RwoqjYv"> User card (web component)</a> by Albert
-        Abdulmanov (<a href="https://codepen.io/albertmolodec">@albertmolodec</a>) on
-        <a href="https://codepen.io">CodePen</a>.</span
+    <div style="display: flex; gap: 20px; flex-wrap: wrap">
+      <user-card
+        name="Albert"
+        surname="Abdulmanov"
+        age="24"
+        imgsrc="https://habrastorage.org/getpro/moikrug/uploads/user/100/023/445/3/avatar/6e1f6f25421b83fee42ce965b9463747.png"
       >
-    </p>
-    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+      </user-card>
+
+      <user-card></user-card>
+    </div>
+
+    <script src="./script.js" type="module" async>
+    </script>
   </body>
 </html>
