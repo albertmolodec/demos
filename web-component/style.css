@@ -1,5 +1,40 @@
-.cards {
+:root {
+  --code-background-color: #262626;
+  --code-color: #f8f8f2;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.show {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
+}
+
+.show > pre {
+  flex: 1;
+}
+
+code {
+  font-family: 'Fira Code', monospace;
+  background-color: var(--code-background-color);
+  color: var(--code-color);
+  border-radius: 0.3rem;
+  padding: 4px 5px 5px;
+  white-space: nowrap;
+}
+
+pre code {
+  white-space: inherit;
+}
+
+pre {
+  background-color: var(--code-background-color);
+  padding: 5px;
+  border-radius: 0.3em;
+  margin: 0;
 }
