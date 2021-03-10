@@ -7,14 +7,14 @@ export const getUserCardHTML = ({
   age = '14',
   imgsrc = jonSnowImageSrc,
 }) => /*html*/ `<div class="card">
-<img class="card__avatar" src="${imgsrc}" alt="User avatar">
+<img id="imgsrc" class="card__avatar" src="${imgsrc}" alt="User avatar">
 <div class="card__info">
   <div class="card__name">
-    ${name}
-    ${surname}
+    <span id="name">${name}</span>
+    <span id="surname">${surname}</span>
   </div>
   <div class="card__age">
-    ${age} y.o.
+  <span id="age">${age}</span> y.o.
   </div>
 </div>
 </div>`

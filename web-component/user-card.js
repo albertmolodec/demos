@@ -12,22 +12,16 @@ class UserCard extends HTMLElement {
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
-    if (this.shadowRoot) {
-      this.render(this.shadowRoot.getElementById('root'), { [name]: newValue })
+    if (!this.shadowRoot) return
+
+    if (['name', 'surname', 'age', 'imgsrc'].includes(name)) {
+      console.log(`Attribute "${name}" has been changed. Replace value to "${newValue}".`)
+      render(newValue, this.shadowRoot.getElementById(name))
     }
   }
 
   static get observedAttributes() {
     return ['name', 'surname', 'age', 'imgsrc']
-  }
-
-  render(newAttributes = {}) {
-    const attributes = Object.fromEntries(Array.from(this.attributes).map(({ name, value }) => [name, value]))
-
-    const template = getUserCardHTML(Object.assign(attributes, newAttributes))
-
-    const userCardElement = createElement('div', { id: 'template', dangerouslySetInnerHTML: { __html: template } })
-    render(userCardElement, this.mountPoint)
   }
 
   connectedCallback() {
@@ -41,7 +35,10 @@ class UserCard extends HTMLElement {
     this.mountPoint.id = 'root'
     this.shadowRoot.appendChild(this.mountPoint)
 
-    this.render()
+    const attributes = Object.fromEntries(Array.from(this.attributes).map(({ name, value }) => [name, value]))
+    const template = getUserCardHTML(attributes)
+    const userCardElement = createElement('div', { id: 'template', dangerouslySetInnerHTML: { __html: template } })
+    render(userCardElement, this.mountPoint)
   }
 }
 
