@@ -67,11 +67,11 @@
     <p>
       Я создал класс <code>UserCard</code> и определил его для кастомного HTML-элемента
       <code>&lt;user-card>&lt;/user-card></code>. Когда браузер заканчивает обрабатывать Javascript и создает инстанс
-      класса <code>UserCard</code>, вызывается метод <code>connectedCallback</code>. В нем создается теневое DOM-дерево,
-      куда сразу добавляются CSS-правила для компонента. Затем из кастомного тега <code>user-card</code> извлекаются
-      атрибуты, и на их основе из шаблона создается HTML-разметка с данными. Метод
-      <code>ReactDOM.render()</code> добавляет получившийся узел в shadowRoot. Готово, компонент создан и отрисован на
-      странице.
+      класса <code>UserCard</code>, в нем вызывается метод <code>connectedCallback</code>. Внутри создается теневое
+      DOM-дерево, куда сразу добавляются CSS-правила для компонента. Затем из кастомного тега
+      <code>user-card</code> извлекаются атрибуты, и на их основе из шаблона создается HTML-разметка с данными. Метод
+      <code>ReactDOM.render()</code> добавляет получившийся узел в <code>shadowRoot</code>. Готово, компонент создан и
+      отрисован на странице.
     </p>
 
     <p>
@@ -106,9 +106,10 @@
     <h2>Проблемы</h2>
     <p>
       Когда я прочитал задание, то не понял, для чего здесь нужен React, ведь можно добавлять и заменять DOM-элементы
-      руками — их тут немного. Но задание есть задание, и я использую <code>ReactDOM.render()</code> для отрисовки
-      компонента в <code>shadowRoot</code>'е и обновления изменившихся атрибутов. К тому же я прочитал несколько
-      руководств и получил опыт добавления реакт-компонентов в веб-компоненты и наоборот.
+      нативными средствами языка — их тут немного. Но задание есть задание, и я использую
+      <code>ReactDOM.render()</code> для отрисовки компонента в <code>shadowRoot</code>'е и обновления изменившихся
+      атрибутов. К тому же я прочитал несколько руководств и получил опыт добавления реакт-компонентов в веб-компоненты
+      и наоборот.
     </p>
 
     <p>Изначально я хотел написать код в Codepen и вставить сюда Embed:</p>
@@ -173,12 +174,8 @@
     if (['name', 'surname', 'age', 'imgsrc'].includes(name)) {
       const rerenderingElement = this.shadowRoot.getElementById(name)
       if (name === 'imgsrc') {
-        console.log(`Attribute imgsrc has been changed.
-                     Replace image source from "${oldValue}" to "${newValue}".`)
         rerenderingElement.setAttribute('src', newValue)
       } else {
-        console.log(`Attribute "${name}" has been changed.
-                     Replace value "${oldValue}" to "${newValue}".`)
         render(newValue, rerenderingElement)
       }
     }
@@ -198,10 +195,8 @@
         <b>Около часа</b> я верстал компонент карточки и подготовил
         <a href="https://github.com/albertmolodec/demos/blob/main/web-component/style.css">стили</a> для этой страницы.
       </li>
-      <li></li>
-      <li></li>
-      <li></li>
-      <li>Еще <b>чуть больше часа</b> я писал этот текст и редактировал его.</li>
+      <li><b>3 часа</b> я реализовывал компонент и исправлял ошибки.</li>
+      <li>Еще <b>часа два</b> я писал этот текст, редактировал его, записывал видео.</li>
     </ul>
 
     <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js" async></script>
