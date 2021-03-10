@@ -1,5 +1,8 @@
-import { createElement } from 'https://cdn.skypack.dev/pin/react@v17.0.1-yH0aYV1FOvoIPeKBbHxg/mode=imports,min/optimized/react.js'
-import { render } from 'https://cdn.skypack.dev/pin/react-dom@v17.0.1-N7YTiyGWtBI97HFLtv0f/mode=imports,min/optimized/react-dom.js'
+// import { createElement } from 'https://cdn.skypack.dev/pin/react@v17.0.1-yH0aYV1FOvoIPeKBbHxg/mode=imports,min/optimized/react.js'
+// import { render } from 'https://cdn.skypack.dev/pin/react-dom@v17.0.1-N7YTiyGWtBI97HFLtv0f/mode=imports,min/optimized/react-dom.js'
+
+import { createElement } from 'https://cdn.skypack.dev/react'
+import { render } from 'https://cdn.skypack.dev/react-dom'
 
 import { userCardStyles, getUserCardHTML } from './templates.js'
 
@@ -18,12 +21,13 @@ class UserCard extends HTMLElement {
     return ['name', 'surname', 'age', 'imgsrc']
   }
 
-  render(container, newAttributes = {}) {
+  render(newAttributes = {}) {
     const attributes = Object.fromEntries(Array.from(this.attributes).map(({ name, value }) => [name, value]))
 
     const template = getUserCardHTML(Object.assign(attributes, newAttributes))
 
-    render(createElement('div', { id: 'template', dangerouslySetInnerHTML: { __html: template } }), container)
+    const userCardElement = createElement('div', { id: 'template', dangerouslySetInnerHTML: { __html: template } })
+    render(userCardElement, this.mountPoint)
   }
 
   connectedCallback() {
@@ -33,11 +37,11 @@ class UserCard extends HTMLElement {
     style.innerHTML = userCardStyles
     this.shadowRoot.appendChild(style)
 
-    const mountPoint = document.createElement('div')
-    mountPoint.id = 'root'
-    this.shadowRoot.appendChild(mountPoint)
+    this.mountPoint = document.createElement('div')
+    this.mountPoint.id = 'root'
+    this.shadowRoot.appendChild(this.mountPoint)
 
-    this.render(mountPoint)
+    this.render()
   }
 }
 
