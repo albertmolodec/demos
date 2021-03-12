@@ -6,30 +6,8 @@ import { userCardStyles, getUserCardHTML } from './templates.js'
 class UserCard extends HTMLElement {
   constructor() {
     super()
-  }
 
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (!this.shadowRoot) return
-
-    if (['name', 'surname', 'age', 'imgsrc'].includes(name)) {
-      const rerenderingElement = this.shadowRoot.getElementById(name)
-      if (name === 'imgsrc') {
-        console.log(`Attribute imgsrc has been changed. Replace image source from "${oldValue}" to "${newValue}".`)
-        rerenderingElement.setAttribute('src', newValue)
-      } else {
-        console.log(`Attribute "${name}" has been changed. Replace value "${oldValue}" to "${newValue}".`)
-        render(newValue, rerenderingElement)
-      }
-    }
-  }
-
-  static get observedAttributes() {
-    return ['name', 'surname', 'age', 'imgsrc']
-  }
-
-  connectedCallback() {
     this.attachShadow({ mode: 'open' })
-
     const style = document.createElement('style')
     style.innerHTML = userCardStyles
     this.shadowRoot.appendChild(style)
@@ -42,6 +20,21 @@ class UserCard extends HTMLElement {
     const template = getUserCardHTML(attributes)
     const userCardElement = createElement('div', { id: 'template', dangerouslySetInnerHTML: { __html: template } })
     render(userCardElement, this.mountPoint)
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    const rerenderingElement = this.shadowRoot.getElementById(name)
+    if (name === 'imgsrc') {
+      console.log(`Attribute imgsrc has been changed. Replace image source from "${oldValue}" to "${newValue}".`)
+      rerenderingElement.setAttribute('src', newValue)
+    } else {
+      console.log(`Attribute "${name}" has been changed. Replace value "${oldValue}" to "${newValue}".`)
+      render(newValue, rerenderingElement)
+    }
+  }
+
+  static get observedAttributes() {
+    return ['name', 'surname', 'age', 'imgsrc']
   }
 }
 
