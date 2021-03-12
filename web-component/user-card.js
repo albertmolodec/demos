@@ -12,14 +12,12 @@ class UserCard extends HTMLElement {
     style.innerHTML = userCardStyles
     this.shadowRoot.appendChild(style)
 
-    this.mountPoint = document.createElement('div')
-    this.mountPoint.id = 'root'
-    this.shadowRoot.appendChild(this.mountPoint)
-
     const attributes = Object.fromEntries(Array.from(this.attributes).map(({ name, value }) => [name, value]))
     const template = getUserCardHTML(attributes)
-    const userCardElement = createElement('div', { id: 'template', dangerouslySetInnerHTML: { __html: template } })
-    render(userCardElement, this.mountPoint)
+    const userCardReactComponent = createElement('div', { dangerouslySetInnerHTML: { __html: template } })
+    const userCardDOMElement = render(userCardReactComponent, document.createElement('div'))
+
+    this.shadowRoot.appendChild(userCardDOMElement.children[0])
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
