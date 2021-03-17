@@ -1,0 +1,42 @@
+.form {
+  display: flex;
+  flex-direction: column;
+
+  &__radio-box {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    margin-top: 3px;
+    margin-bottom: 17px;
+  }
+
+  &__radio-list {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+
+  &__radio-header {
+    font-size: var(--size-font-text-200);
+    line-height: var(--size-lineheight-text-200);
+    color: var(--color-grey-200);
+    padding: 0;
+  }
+
+  &__field {
+    margin: 3px 0;
+  }
+
+  &__submit-button {
+    margin-top: 30px;
+  }
+
+  &__radio {
+    display: flex;
+    flex: 1;
+
+    &:not(:first-child) {
+      margin-left: 16px;
+    }
+  }
+}

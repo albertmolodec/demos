@@ -1,0 +1,65 @@
+.radio {
+  &__input {
+    @mixin visually-hidden;
+  }
+
+  &__image {
+    height: 37px;
+    opacity: 0.7;
+  }
+
+  &__label {
+    color: var(--color-grey-300);
+    font-size: var(--size-font-text-400);
+    line-height: var(--size-lineheight-text-400);
+    margin-top: 11px;
+  }
+
+  &__box {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: var(--color-grey-100);
+    border-radius: var(--size-border-radius-radio);
+    outline: none;
+    transition: all 0.1s linear;
+
+    padding: 14px 30px 10px 30px;
+    @mixin mobile {
+      padding: 14px 22px 10px 22px;
+    }
+  }
+
+  &__input:checked ,
+
+  &__input:checked ~ &__box {
+    box-shadow: 0 0 0 0px var(--color-grey-100), 0 0 0 1px var(--color-grey-700);
+
+    & .radio__label {
+      color: var(--color-grey-700);
+    }
+
+    & .radio__image {
+      opacity: 1;
+    }
+  }
+
+  &__input:focus ~ &__box,
+  &__input:hover:not([disabled]) ~ &__box {
+    box-shadow: 0 0 0 0px var(--color-grey-100), 0 0 0 1px var(--color-blue-900);
+
+    & .radio__label {
+      color: var(--color-grey-500);
+    }
+
+    & .radio__image {
+      opacity: 1;
+    }
+  }
+
+  &__input:disabled ~ &__box {
+    opacity: 0.2;
+  }
+}

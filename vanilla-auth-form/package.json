@@ -1,0 +1,34 @@
+{
+  "name": "vanilla-auth-form",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --out-dir public",
+    "serve": "serve public",
+    "deploy": "now",
+    "clean": "rimraf dist .cache .parcel-cache public",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertmolodec/vanilla-auth-form.git"
+  },
+  "author": "Albert Abdulmanov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/albertmolodec/vanilla-auth-form/issues"
+  },
+  "homepage": "https://github.com/albertmolodec/vanilla-auth-form#readme",
+  "devDependencies": {
+    "now": "^16.6.0",
+    "parcel-bundler": "^1.12.4",
+    "serve": "^11.2.0"
+  },
+  "dependencies": {
+    "postcss-mixins": "^6.2.3",
+    "postcss-nested": "^4.2.1",
+    "postcss-preset-env": "^6.7.0"
+  }
+}
