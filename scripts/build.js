@@ -12,7 +12,6 @@ const ROOT_HTML = join(SRC, 'index.html')
 const ROOT_CSS = join(SRC, 'root.css')
 
 async function installAndBuild(package) {
-  console.log({ SRC, package })
   await exec(`cd ${join(SRC, package)} && npm i && npm run build`)
 }
 

@@ -17,12 +17,7 @@ jobs:
       #   run: npm ci --production
 
       - name: Build 🔧
-        run: npm run build
-
-      - name: Test
-        run: |
-          mkdir dist
-          echo Hello > dist/index.html
+        run: node scripts/build.js
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
