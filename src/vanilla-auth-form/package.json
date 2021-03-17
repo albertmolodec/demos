@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "parcel src/index.html",
-    "build": "parcel build src/index.html --out-dir public",
-    "serve": "serve public",
+    "build": "parcel build src/index.html --out-dir dist",
+    "serve": "serve dist",
     "deploy": "now",
-    "clean": "rimraf dist .cache .parcel-cache public",
+    "clean": "rimraf dist .cache .parcel-cache dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
