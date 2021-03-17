@@ -1,0 +1,31 @@
+name: Build and Deploy
+on:
+  push:
+    branches:
+      - source
+  watch:
+    types: [started]
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: github.actor == github.event.repository.owner.login
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+
+      # - name: Install 📦
+      #   run: npm ci --production
+
+      # - name: Build 🔧
+      #   run: npm run build
+
+      - name: Test
+        run: |
+          mkdir dist
+          echo Hello > dist/index.html
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4
+        with:
+          BRANCH: main
+          FOLDER: dist

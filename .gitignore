@@ -10,3 +10,9 @@ node_modules/
 
 # Next.js build output
 .next
+
+# MacOS trash
+.DS_Store
+
+# Built
+dist
