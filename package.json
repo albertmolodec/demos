@@ -1,0 +1,14 @@
+{
+  "name": "demos",
+  "version": "1.0.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/albertmolodec/demos.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "fs-extra": "^9.1.0"
+  }
+}
