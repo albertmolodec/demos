@@ -18,7 +18,7 @@ async function build() {
     buildPackageWithDeps('vanilla-auth-form'),
   ])
 
-  copyFromSrcToDist(join('vanilla-auth-form', 'dist'), 'vanilla-auth-form')
+  await copyFromSrcToDist(join('vanilla-auth-form', 'dist'), 'vanilla-auth-form')
 }
 
 build().catch((e) => {

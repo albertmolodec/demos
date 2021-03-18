@@ -6,7 +6,7 @@
     "url": "git+https://github.com/albertmolodec/demos.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "node scripts/build.js"
   },
   "dependencies": {
     "fs-extra": "^9.1.0"
