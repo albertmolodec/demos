@@ -1,13 +1,7 @@
 const { mkdir } = require('fs').promises
 const { join } = require('path')
-const { copy } = require('fs-extra')
 
-const {
-  SRC,
-  DIST,
-  copyFromSrcToDist,
-  buildPackageWithDeps,
-} = require('./my-fs.js')
+const { DIST, copyFromSrcToDist, buildPackageWithDeps } = require('./my-fs.js')
 
 async function build() {
   await mkdir(DIST, { recursive: true })
