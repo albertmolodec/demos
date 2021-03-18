@@ -12,8 +12,9 @@ function copyFromSrcToDist(inputPath, outputPath = inputPath) {
 }
 
 function buildPackageWithDeps(packageName) {
+  const packagePath = join(SRC, packageName)
   return promisifiedExec(
-    `cd ${join(SRC, packageName)} && npm i && npm run build`
+    `npm install --prefix ${packagePath} && npm run build --prefix ${packagePath}`
   )
 }
 
