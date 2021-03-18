@@ -168,18 +168,14 @@
 
     <pre>
       <code>
-  attributeChangedCallback(name, oldValue, newValue) {
-    if (!this.shadowRoot) return
-
-    if (['name', 'surname', 'age', 'imgsrc'].includes(name)) {
-      const rerenderingElement = this.shadowRoot.getElementById(name)
-      if (name === 'imgsrc') {
-        rerenderingElement.setAttribute('src', newValue)
-      } else {
-        render(newValue, rerenderingElement)
-      }
-    }
-  }
+const rerenderingElement = this.shadowRoot.getElementById(name)
+if (name === 'imgsrc') {
+  console.log(`Attribute imgsrc has been changed. Replace image source from "${oldValue}" to "${newValue}".`)
+  rerenderingElement.setAttribute('src', newValue)
+} else {
+  console.log(`Attribute "${name}" has been changed. Replace value "${oldValue}" to "${newValue}".`)
+  render(newValue, rerenderingElement)
+}
       </code>
     </pre>
 
@@ -193,7 +189,7 @@
       </li>
       <li>
         <b>Около часа</b> я верстал компонент карточки и подготовил
-        <a href="https://github.com/albertmolodec/demos/blob/main/web-component/style.css">стили</a> для этой страницы.
+        <a href="https://github.com/albertmolodec/demos/blob/source/src/web-component/style.css">стили</a> для этой страницы.
       </li>
       <li><b>3 часа</b> я реализовывал компонент и исправлял ошибки.</li>
       <li>Еще <b>часа два</b> я писал этот текст, редактировал его, записывал видео.</li>
