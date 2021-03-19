@@ -1,14 +1,19 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(var(--itemWidth, 300px), 1fr)
-  );
-  grid-gap: var(--gridGap, 1.2rem);
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1.2rem;
 }
 
 .item {
-  border: 1px solid #e6e6e6;
+  --color-border: #e6e6e6;
+  --size-border: 6px;
+  --delay-animation: 75ms;
+
+  /* default property */
+  --color-accent: var(--color-border);
+
+  --color-github: #d1d5da;
+  --color-github-hover: #6a737d;
 }
 
 .item__image-wrapper {
@@ -29,52 +34,57 @@
 .item__image {
   transition-property: transform;
   transition-timing-function: ease;
-  transition-duration: 0.1s;
+  transition-duration: var(--delay-animation);
 }
 
 .item__image-wrapper::before {
   top: 0;
   left: 0;
 
-  border-top: 6px solid transparent;
-  border-bottom: 6px solid transparent;
-  border-right: 6px solid var(--color-accent);
+  border-top: var(--size-border) solid transparent;
+  border-bottom: var(--size-border) solid transparent;
+  border-right: var(--size-border) solid var(--color-accent);
 
   transform-origin: left center;
-  transform: translateY(-6px) scale(0);
+  transform: translateY(calc(var(--size-border) * -1)) scale(0);
 }
 
 .item__image-wrapper::after {
   bottom: 0;
   right: 0;
 
-  border-left: 6px solid transparent;
-  border-right: 6px solid transparent;
-  border-top: 6px solid var(--color-accent);
+  border-left: var(--size-border) solid transparent;
+  border-right: var(--size-border) solid transparent;
+  border-top: var(--size-border) solid var(--color-accent);
 
   transform-origin: center bottom;
-  transform: translateX(6px) scale(0);
+  transform: translateX(var(--size-border)) scale(0);
 }
 
 .item__image-wrapper:hover .item__image {
-  transform: translate(6px, -6px);
-  transition-delay: 75ms;
+  transform: translate(var(--size-border), calc(var(--size-border) * -1));
+  transition-delay: var(--delay-animation);
+
+  border-bottom: none;
+  border-left: none;
 }
 
 .item__image-wrapper:hover::before {
-  transform: translateY(-6px) scale(1);
-  transition-delay: 75ms;
+  transform: translateY(calc(var(--size-border) * -1)) scale(1);
+  transition-delay: var(--delay-animation);
 }
 
 .item__image-wrapper:hover::after {
-  transform: translateX(6px) scale(1);
-  transition-delay: 75ms;
+  transform: translateX(var(--size-border)) scale(1);
+  transition-delay: var(--delay-animation);
 }
 
 .item__image {
   aspect-ratio: 16 / 9;
   object-fit: contain;
   width: 100%;
+
+  border: 1px solid var(--color-border);
 }
 
 .item__link {
@@ -85,6 +95,9 @@
 .item__caption {
   padding: 8px 48px 8px 8px;
   position: relative;
+
+  border: 1px solid var(--color-border);
+  border-top: none;
 }
 
 .item__github-icon {
@@ -93,13 +106,13 @@
   top: 18px;
   right: 18px;
 
-  color: #d1d5da;
+  color: var(--color-github);
   fill: currentColor;
-  transition: 0.1s ease color;
+  transition: calc(var(--delay-animation) * 2) ease color;
 }
 
 .item__github-icon:hover {
-  color: #6a737d;
+  color: var(--color-github-hover);
 }
 
 .item__title {
