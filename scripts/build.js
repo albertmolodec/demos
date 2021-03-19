@@ -20,7 +20,10 @@ async function build() {
     buildPackageWithDeps('vanilla-auth-form'),
   ])
 
-  await copyFromSrcToDist(join('vanilla-auth-form', 'dist'), 'vanilla-auth-form')
+  await Promise.all([
+    copyFromSrcToDist(join('vanilla-auth-form', 'dist'), 'vanilla-auth-form'),
+    copyFromSrcToDist(join('vanilla-auth-form', 'preview.png')),
+  ])
 }
 
 build().catch((e) => {
