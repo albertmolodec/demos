@@ -7,6 +7,10 @@
   grid-gap: var(--gridGap, 1.2rem);
 }
 
+.item {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 2px 0px, rgba(0, 0, 0, 0.1) 0px 0px 2px 0px;
+}
+
 .item__image-wrapper {
   position: relative;
   background-color: var(--color-accent);
@@ -71,8 +75,6 @@
   aspect-ratio: 16 / 9;
   object-fit: contain;
   width: 100%;
-
-  border: 1px solid var(--color-accent);
 }
 
 .item__link {
@@ -81,7 +83,8 @@
 }
 
 .item__title {
-  margin: 4px 0;
+  margin: 4px 4px 4px 8px;
+  margin-left: 8px;
   overflow: hidden;
 
   color: black;
@@ -95,6 +98,8 @@
 }
 
 .item__subtitle {
+  margin: 2px 4px 4px 8px;
+
   font-size: 12px;
   color: grey;
 }
