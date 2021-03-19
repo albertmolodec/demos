@@ -5,18 +5,80 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="/reset.css" />
     <link rel="stylesheet" href="/root.css" />
+    <link rel="stylesheet" href="/main.css" />
     <title>My demo projects</title>
   </head>
   <body>
-    <h1>My demo projects</h1>
-    <nav>
-      <ul>
-        <li><a href="/web-component">Web component rendered by React</a></li>
-        <li><a href="/use-toggle">Custom useToggle hook</a></li>
-        <li><a href="/vanilla-auth-form">Vanilla auth form (2019)</a></li>
-        <li><a href="/xsolla-summer-school">Xsolla summer school test task (2018)</a></li>
-      </ul>
-    </nav>
+    <main class="page">
+      <h1>My demo projects</h1>
+
+      <div class="grid">
+        <article class="item" style="--color-accent: #1f9821;">
+          <div class="item__image-wrapper">
+            <a class="item__link" href="/use-toggle">
+              <img
+                src="./use-toggle/preview.png"
+                alt="Preview image for the page about useToggle react hook"
+                class="item__image"
+              />
+            </a>
+          </div>
+          <a class="item__link" href="/use-toggle">
+            <h2 class="item__title">Custom useToggle hook</h2>
+          </a>
+          <div class="item__subtitle">2021</div>
+        </article>
+
+        <article class="item" style="--color-accent: #CBAAD6;">
+          <div class="item__image-wrapper">
+            <a class="item__link" href="/web-component">
+              <img
+                src="./web-component/preview.png"
+                alt="Preview image for the page about web component"
+                class="item__image"
+              />
+            </a>
+          </div>
+          <a class="item__link" href="/web-component">
+            <h2 class="item__title">Web component rendered by React</h2>
+          </a>
+          <div class="item__subtitle">2021</div>
+        </article>
+
+        <article class="item" style="--color-accent: #401286;">
+          <div class="item__image-wrapper">
+            <a class="item__link" href="/vanilla-auth-form">
+              <img
+                src="./vanilla-auth-form/preview.png"
+                alt="Preview image for the vanilla auth form"
+                class="item__image"
+              />
+            </a>
+          </div>
+          <a class="item__link" href="/vanilla-auth-form">
+            <h2 class="item__title">Vanilla auth form</h2>
+          </a>
+          <div class="item__subtitle">2019</div>
+        </article>
+
+        <article class="item" style="--color-accent: #ff0858;">
+          <div class="item__image-wrapper">
+            <a class="item__link" href="/xsolla-summer-school">
+              <img
+                src="./xsolla-summer-school/preview.png"
+                alt="Preview image for test task to Xsolla Summer School 2018"
+                class="item__image"
+              />
+            </a>
+          </div>
+          <a class="item__link" href="/xsolla-summer-school">
+            <h2 class="item__title">Xsolla summer school test task</h2>
+          </a>
+          <div class="item__subtitle">2018</div>
+        </article>
+      </div>
+    </main>
   </body>
 </html>

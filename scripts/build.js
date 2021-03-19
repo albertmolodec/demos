@@ -7,9 +7,11 @@ async function build() {
   await mkdir(DIST, { recursive: true })
 
   await Promise.all([
-    copyFromSrcToDist('index.html'),
-    copyFromSrcToDist('root.css'),
     copyFromSrcToDist('favicon.png'),
+    copyFromSrcToDist('index.html'),
+    copyFromSrcToDist('reset.css'),
+    copyFromSrcToDist('root.css'),
+    copyFromSrcToDist('main.css'),
 
     copyFromSrcToDist('web-component'),
     copyFromSrcToDist('use-toggle'),
