@@ -8,7 +8,7 @@
 }
 
 .item {
-  border: #e6e6e6;
+  border: 1px solid #e6e6e6;
 }
 
 .item__image-wrapper {
@@ -82,9 +82,28 @@
   color: inherit;
 }
 
+.item__caption {
+  padding: 8px 48px 8px 8px;
+  position: relative;
+}
+
+.item__github-icon {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  color: #d1d5da;
+  fill: currentColor;
+  transition: 0.1s ease color;
+}
+
+.item__github-icon:hover {
+  color: #6a737d;
+}
+
 .item__title {
-  margin: 4px 4px 4px 8px;
-  margin-left: 8px;
+  margin: 0;
   overflow: hidden;
 
   color: black;
@@ -98,7 +117,7 @@
 }
 
 .item__subtitle {
-  margin: 2px 4px 4px 8px;
+  margin-top: 2px;
 
   font-size: 12px;
   color: grey;
