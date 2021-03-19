@@ -1,10 +1,10 @@
-const { mkdir } = require('fs').promises
+const { ensureDir } = require('fs-extra')
 const { join } = require('path')
 
 const { DIST, copyFromSrcToDist, buildPackageWithDeps } = require('./my-fs.js')
 
 async function build() {
-  await mkdir(DIST, { recursive: true })
+  await ensureDir(DIST)
 
   await Promise.all([
     copyFromSrcToDist('favicon.png'),
@@ -20,10 +20,12 @@ async function build() {
     buildPackageWithDeps('vanilla-auth-form'),
   ])
 
-  await Promise.all([
-    copyFromSrcToDist(join('vanilla-auth-form', 'dist'), 'vanilla-auth-form'),
-    copyFromSrcToDist(join('vanilla-auth-form', 'preview.png')),
-  ])
+  await copyFromSrcToDist(
+    join('vanilla-auth-form', 'dist'),
+    'vanilla-auth-form'
+  )
+
+  await copyFromSrcToDist(join('vanilla-auth-form', 'preview.png'))
 }
 
 build().catch((e) => {
