@@ -16,6 +16,7 @@ async function build() {
     copyFromSrcToDist('web-component'),
     copyFromSrcToDist('use-toggle'),
     copyFromSrcToDist('xsolla-summer-school'),
+    copyFromSrcToDist('build-react'),
 
     buildPackageWithDeps('vanilla-auth-form'),
   ])
