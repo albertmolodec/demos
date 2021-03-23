@@ -1,18 +1,19 @@
-const element = {
-  type: 'h1',
-  props: {
-    title: 'foo',
-    children: 'Hello world!'
-  }
-}
+import Didact from './didact.js'
+
+// const element = Didact.createElement(
+//   'div',
+//   { id: 'foo' },
+//   Didact.createElement('a', null, 'bar'),
+//   Didact.createElement('b')
+// )
+
+/** @jsx Didact.createElement */
+const element = (
+  <div id="foo">
+    <a>bar</a>
+    <b />
+  </div>
+)
 
 const container = document.getElementById('root')
-
-const node = document.createElement(element.type)
-node['title'] = element.props.title
-
-const text = document.createTextNode('')
-text['nodeValue'] = element.props.children
-
-node.appendChild(text)
-container.appendChild(node)
+Didact.render(element, container)
