@@ -20,23 +20,106 @@ function createTextElement(text) {
   }
 }
 
-function render(element, container) {
+function createDom(fiber) {
   const dom =
-    element.type === 'TEXT_ELEMENT'
+    fiber.type === 'TEXT_ELEMENT'
       ? document.createTextNode('')
-      : document.createElement(element.type)
+      : document.createElement(fiber.type)
 
   const isProperty = (key) => key !== 'children'
-  const propNames = Object.keys(element.props).filter(isProperty)
-  for (let name of propNames) {
-    dom[name] = element.props[name]
+  Object.keys(fiber.props)
+    .filter(isProperty)
+    .forEach((name) => {
+      dom[name] = fiber.props[name]
+    })
+
+  return dom
+}
+
+function commitRoot() {
+  commitWork(wipRoot.child)
+  wipRoot = null
+}
+
+function commitWork(fiber) {
+  if (!fiber) return
+
+  const domParent = fiber.parent.dom
+  domParent.appendChild(fiber.dom)
+  commitWork(fiber.child)
+  commitWork(fiber.sibling)
+}
+
+function render(element, container) {
+  wipRoot = {
+    dom: container,
+    props: {
+      children: [element],
+    },
+  }
+  nextUnitOfWork = wipRoot
+}
+
+let nextUnitOfWork = null
+let wipRoot = null
+
+function workLoop(deadline) {
+  let shouldYield = false
+  while (nextUnitOfWork && !shouldYield) {
+    nextUnitOfWork = performUnitOfWork(nextUnitOfWork)
+    shouldYield = deadline.timeRemaining() < 1
   }
 
-  for (let child of element.props.children) {
-    render(child, dom)
+  if (!nextUnitOfWork && wipRoot) {
+    commitRoot()
   }
 
-  container.appendChild(dom)
+  requestIdleCallback(workLoop)
+}
+
+// аналог setTimeout. Браузер запускает коллбэк, когда главный поток свободен
+requestIdleCallback(workLoop)
+
+function performUnitOfWork(fiber) {
+  if (!fiber.dom) {
+    fiber.dom = createDom(fiber)
+  }
+
+  const elements = fiber.props.children
+  let index = 0
+  let prevSibling = null
+
+  while (index < elements.length) {
+    const element = elements[index]
+
+    const newFiber = {
+      type: element.type,
+      props: element.props,
+      parent: fiber,
+      dom: null,
+    }
+
+    if (index === 0) {
+      fiber.child = newFiber
+    } else {
+      prevSibling.sibling = newFiber
+    }
+
+    prevSibling = newFiber
+    index += 1
+  }
+
+  if (fiber.child) {
+    return fiber.child
+  }
+
+  let nextFiber = fiber
+  while (nextFiber) {
+    if (nextFiber.sibling) {
+      return nextFiber.sibling
+    }
+    nextFiber = nextFiber.parent
+  }
 }
 
 const Didact = {
