@@ -1,7 +1,7 @@
 # Таблица транзакций
 Тестовое задание Frontend-потока на [Xsolla Summer School 2018](http://school.xsolla.com).
 
-https://albertmolodec.github.io/xsollaSummerSchool-Test-Task/
+https://demo.albert.works/xsolla-summer-school
 
 Автор: Альберт Абдульманов.
 
