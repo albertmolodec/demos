@@ -3,7 +3,7 @@
 
   import Home from './pages/Home.svelte'
   import Project from './pages/Project.svelte'
-  import NotFound from './pages/NotFound.svelte';
+  import NotFound from './pages/NotFound.svelte'
 </script>
 
 <div class="page">
@@ -14,7 +14,7 @@
     <Route path="/:name" let:params>
       <Project name={params.name} />
     </Route>
-    <Route component={NotFound}/>
+    <Route component={NotFound} />
   </Router>
 </div>
 

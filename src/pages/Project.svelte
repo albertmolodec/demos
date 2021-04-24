@@ -1,5 +1,6 @@
 <script lang="ts">
   import NotFound from './NotFound.svelte'
+  import Editor from '../components/Editor.svelte'
 
   import { projects } from '../lib/projects'
   import type { names } from '../lib/projects'
@@ -10,6 +11,7 @@
 </script>
 
 {#if project}
+  <Editor />
   <iframe
     src="/projects/{name}/{project.isBundled ? 'dist/' : ''}index.html"
     frameborder="0"
