@@ -8,7 +8,7 @@
 
 <div class="page">
   <Router>
-    <Route path="/">
+    <Route exact path="/">
       <Home />
     </Route>
     <Route path="/:name" let:params>
