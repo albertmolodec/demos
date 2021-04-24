@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="/favicon.png" />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet" />
+    <title>Web component</title>
+  </head>
+  <body>
+    <div class="page">
+      <h1>
+        Тестовое задание
+        <a href="https://github.com/albertmolodec/demos/tree/source/public/projects/web-component">«Карточка пользователя»</a>
+      </h1>
+
+      <p>Веб-компонент отображает карточку пользователя. Она содержит имя, фамилию, возраст и фотографию.</p>
+
+      <p>
+        Все данные, необходимые для отображения, передаются в компонент с помощью HTML-атрибутов кастомного HTML-тега
+        <code>user-card</code>. При изменении атрибутов элемента карточка обновляется в реальном времени. Содержимое
+        карточки рендерится с помощью библиотеки React.
+      </p>
+
+      <div class="show">
+        <user-card
+          name="Albert"
+          surname="Abdulmanov"
+          age="24"
+          imgsrc="https://habrastorage.org/getpro/moikrug/uploads/user/100/023/445/3/avatar/6e1f6f25421b83fee42ce965b9463747.png"
+        >
+        </user-card>
+        <pre>
+        <code>
+    &lt;user-card
+      name="Albert"
+      surname="Abdulmanov"
+      age="24"
+      imgsrc="./6e1f6f25421b83fee42ce965b9463747.png"
+    >
+    &lt;/user-card>
+        </code>
+      </pre>
+      </div>
+
+      <p>Если не задать атрибуты, будут подставлены дефолтные.</p>
+
+      <div class="show">
+        <user-card></user-card>
+        <pre>
+    <code>
+      &lt;user-card>&lt;/user-card>
+    </code>
+    </pre>
+      </div>
+
+      <h2>Комментарии</h2>
+      <p>
+        React и ReactDOM импортируются в JS-модуль <code>user-card.js</code> через
+        <a href="https://www.skypack.dev/">Skypack</a>. Я выбрал CDN, чтобы не тратить время на установку пакетов и
+        сборку.
+      </p>
+
+      <p>
+        Я создал класс <code>UserCard</code> и определил его для кастомного HTML-элемента
+        <code>&lt;user-card>&lt;/user-card></code>. Когда браузер заканчивает обрабатывать Javascript и создает инстанс
+        класса <code>UserCard</code>, в нем вызывается метод <code>connectedCallback</code>. Внутри создается теневое
+        DOM-дерево, куда сразу добавляются CSS-правила для компонента. Затем из кастомного тега
+        <code>user-card</code> извлекаются атрибуты, и на их основе из шаблона создается HTML-разметка с данными. Метод
+        <code>ReactDOM.render()</code> добавляет получившийся узел в <code>shadowRoot</code>. Готово, компонент создан и
+        отрисован на странице.
+      </p>
+
+      <p>
+        Условие задачи содержало требование «При изменении атрибутов элемента карточка обновляется в реальном времени». Я
+        реализовал это поведение при помощи методов <code>attributeChangedCallback</code> и
+        <code>observedAttributes</code>. Если у кастомного элемента изменить или удалить атрибут, это мгновенно
+        отобразится на экране.
+      </p>
+
+      <figure>
+        <video controls="true" src="./media/edit-age.mov"></video>
+        <figcaption>Изменение атрибута «Возраст»</figcaption>
+      </figure>
+
+      <figure>
+        <video controls="true" src="./media/edit-image-source.mov"></video>
+        <figcaption>Изменение адреса изображения</figcaption>
+      </figure>
+
+      <p>Атрибуты можно не только изменять, но и удалять и добавлять.</p>
+
+      <figure>
+        <video controls="true" src="./media/add-attribute.mov"></video>
+        <figcaption>Добавление атрибута</figcaption>
+      </figure>
+
+      <figure>
+        <video controls="true" src="./media/remove-attribute.mov"></video>
+        <figcaption>Удаление атрибута</figcaption>
+      </figure>
+
+      <h2>Проблемы</h2>
+      <p>
+        Когда я прочитал задание, то не понял, для чего здесь нужен React, ведь можно добавлять и заменять DOM-элементы
+        нативными средствами языка — их тут немного. Но задание есть задание, и я использую
+        <code>ReactDOM.render()</code> для отрисовки компонента в <code>shadowRoot</code>'е и обновления изменившихся
+        атрибутов. К тому же я прочитал несколько руководств и получил опыт добавления реакт-компонентов в веб-компоненты
+        и наоборот.
+      </p>
+
+      <p>Изначально я хотел написать код в Codepen и вставить сюда Embed:</p>
+      <p
+        class="codepen"
+        data-height="939"
+        data-theme-id="light"
+        data-default-tab="js,result"
+        data-user="albertmolodec"
+        data-slug-hash="XWNyOpw"
+        style="
+          height: 939px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 2px solid;
+          margin: 1em 0;
+          padding: 1em;
+        "
+        data-pen-title="User card (web component) + React"
+      >
+        <span
+          >See the Pen <a href="https://codepen.io/albertmolodec/pen/XWNyOpw"> User card (web component) + React</a> by
+          Albert Abdulmanov (<a href="https://codepen.io/albertmolodec">@albertmolodec</a>) on
+          <a href="https://codepen.io">CodePen</a>.</span
+        >
+      </p>
+      <p>
+        Это оказалось не очень хорошей идеей, потому что Codepen долго и иногда внезапно пересобирает код, не сохраняет
+        историю изменений, мусорит в инспекторе. Поэтому я перенес код в свою локальную среду выполнения и задеплоил на
+        Github Pages.
+      </p>
+
+      <p>
+        <a
+          href="https://github.com/albertmolodec/demos/blob/2db25ef51fa0669d5c6f596751f79140dff4f12a/web-component/user-card.js"
+          >Первые версии</a
+        >
+        компонента <code>user-card</code> имели ряд недостатков:
+      </p>
+
+      <ul>
+        <li>
+          Метод <code>attributeChangedCallback</code> вызывал метод <code>render</code> при каждом изменении параметров
+          <code>name</code>, <code>surname</code>, <code>age</code>, <code>imgsrc</code>.
+        </li>
+        <li><code>render</code> каждый раз перерисовывал всю карточку, даже если изменился только один атрибут.</li>
+        <li>Стили и шаблон компонента находились в том же модуле, что и логика.</li>
+      </ul>
+
+      <p>
+        Поэтому я оптимизировал коллбэк путем задания идентификаторов атрибутам в шаблоне, а view-слой перенес в отдельный
+        модуль <code>templates.js</code>
+      </p>
+
+      <pre>
+        <code>
+  const rerenderingElement = this.shadowRoot.getElementById(name)
+  if (name === 'imgsrc') {
+    console.log(`Attribute imgsrc has been changed. Replace image source from "${oldValue}" to "${newValue}".`)
+    rerenderingElement.setAttribute('src', newValue)
+  } else {
+    console.log(`Attribute "${name}" has been changed. Replace value "${oldValue}" to "${newValue}".`)
+    render(newValue, rerenderingElement)
+  }
+        </code>
+      </pre>
+
+      <h2>Время выполнения</h2>
+      <p>Я потратил на эту задачу примерно 7 часов.</p>
+      <ul>
+        <li>
+          <b>Полтора часа</b> ушло на знакомство с технологией Web Components: чтение документации и беглый просмотр
+          доклада <a href="https://www.youtube.com/watch?v=3mGZzHMT8g8">"Web Components, или Туда и обратно"</a> от Павла
+          Малышева.
+        </li>
+        <li>
+          <b>Около часа</b> я верстал компонент карточки и подготовил
+          <a href="https://github.com/albertmolodec/demos/tree/source/public/projects/web-component/style.css">стили</a> для этой страницы.
+        </li>
+        <li><b>3 часа</b> я реализовывал компонент и исправлял ошибки.</li>
+        <li>Еще <b>часа два</b> я писал этот текст, редактировал его, записывал видео.</li>
+      </ul>
+    </div>
+
+    <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+    <script src="./user-card.js" type="module" async></script>
+  </body>
+</html>
