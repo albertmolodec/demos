@@ -3,6 +3,7 @@
 
   import Home from './pages/Home.svelte'
   import Project from './pages/Project.svelte'
+  import NotFound from './pages/NotFound.svelte';
 </script>
 
 <div class="page">
@@ -10,9 +11,10 @@
     <Route path="/">
       <Home />
     </Route>
-    <Route path="/project/:name" let:params>
+    <Route path="/:name" let:params>
       <Project name={params.name} />
     </Route>
+    <Route component={NotFound}/>
   </Router>
 </div>
 

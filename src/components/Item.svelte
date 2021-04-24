@@ -10,7 +10,7 @@
 
 <article class="item" style="--color-accent: {accentColor}">
   <div class="item__image-wrapper">
-    <a class="item__link" href="/project/{name}">
+    <a class="item__link" href="/{name}">
       <img
         src="/projects/{name}/preview.png"
         alt="Preview for {label}"
@@ -19,7 +19,7 @@
     </a>
   </div>
   <div class="item__caption">
-    <a class="item__link" href="/project/{name}" use:link>
+    <a class="item__link" href="/{name}" use:link>
       <h2 class="item__title">{label}</h2>
     </a>
     {#if year}

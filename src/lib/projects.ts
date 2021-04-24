@@ -12,6 +12,7 @@ export type names =
   | 'web-component'
   | 'vanilla-auth-form'
   | 'xsolla-summer-school'
+  | string
 
 export const projects: Project[] = [
   {

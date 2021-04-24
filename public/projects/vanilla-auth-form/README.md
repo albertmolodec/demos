@@ -2,7 +2,7 @@
 
 This page allows you create an account and send feedback.
 
-https://demo.albert.works/project/vanilla-auth-form
+https://demo.albert.works/vanilla-auth-form
 
 ![Chewing Gum Preview](./src/images/preview.png)
 
