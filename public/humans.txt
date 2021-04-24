@@ -1,0 +1,10 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Albert Abdulmanov -- Developer -- @albertmolodec
+
+# TECHNOLOGY COLOPHON
+
+    Vite, Svelte, Typescript, Javascript, React, Web Components
