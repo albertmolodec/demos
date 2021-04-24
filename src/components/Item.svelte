@@ -9,21 +9,21 @@
 </script>
 
 <article class="item" style="--color-accent: {accentColor}">
-  <div class="item__image-wrapper">
-    <a class="item__link" href="/{name}">
+  <div class="image-wrapper">
+    <a class="link" href="/{name}">
       <img
         src="/projects/{name}/preview.png"
         alt="Preview for {label}"
-        class="item__image"
+        class="image"
       />
     </a>
   </div>
-  <div class="item__caption">
-    <a class="item__link" href="/{name}" use:link>
-      <h2 class="item__title">{label}</h2>
+  <div class="caption">
+    <a class="link" href="/{name}" use:link>
+      <h2 class="title">{label}</h2>
     </a>
     {#if year}
-      <div class="item__subtitle">{year}</div>
+      <div class="subtitle">{year}</div>
     {/if}
     <a
       href="https://github.com/albertmolodec/demos/tree/source/public/projects/{name}"
@@ -31,7 +31,7 @@
     >
       <svg
         height="24"
-        class="item__github-icon"
+        class="github-icon"
         viewBox="0 0 16 16"
         version="1.1"
         width="24"
@@ -52,34 +52,35 @@
     --size-border: 6px;
     --delay-animation: 75ms;
 
+    /* Default value */
     --color-accent: var(--color-border);
 
     --color-github: #d1d5da;
     --color-github-hover: #6a737d;
   }
 
-  .item__image-wrapper {
+  .image-wrapper {
     position: relative;
     background-color: var(--color-accent);
   }
 
-  .item__image-wrapper::before,
-  .item__image-wrapper::after {
+  .image-wrapper::before,
+  .image-wrapper::after {
     content: '';
     position: absolute;
     width: 0px;
     height: 0px;
   }
 
-  .item__image-wrapper::before,
-  .item__image-wrapper::after,
-  .item__image {
+  .image-wrapper::before,
+  .image-wrapper::after,
+  .image {
     transition-property: transform;
     transition-timing-function: ease;
     transition-duration: var(--delay-animation);
   }
 
-  .item__image-wrapper::before {
+  .image-wrapper::before {
     top: 0;
     left: 0;
 
@@ -91,7 +92,7 @@
     transform: translateY(calc(var(--size-border) * -1)) scale(0);
   }
 
-  .item__image-wrapper::after {
+  .image-wrapper::after {
     bottom: 0;
     right: 0;
 
@@ -103,7 +104,7 @@
     transform: translateX(var(--size-border)) scale(0);
   }
 
-  .item__image-wrapper:hover .item__image {
+  .image-wrapper:hover .image {
     transform: translate(var(--size-border), calc(var(--size-border) * -1));
     transition-delay: var(--delay-animation);
 
@@ -111,17 +112,17 @@
     border-left: none;
   }
 
-  .item__image-wrapper:hover::before {
+  .image-wrapper:hover::before {
     transform: translateY(calc(var(--size-border) * -1)) scale(1);
     transition-delay: var(--delay-animation);
   }
 
-  .item__image-wrapper:hover::after {
+  .image-wrapper:hover::after {
     transform: translateX(var(--size-border)) scale(1);
     transition-delay: var(--delay-animation);
   }
 
-  .item__image {
+  .image {
     aspect-ratio: 16 / 9;
     object-fit: contain;
     width: 100%;
@@ -129,12 +130,12 @@
     border: 1px solid var(--color-border);
   }
 
-  .item__link {
+  .link {
     text-decoration: none;
     color: inherit;
   }
 
-  .item__caption {
+  .caption {
     padding: 8px 48px 8px 8px;
     position: relative;
 
@@ -142,7 +143,7 @@
     border-top: none;
   }
 
-  .item__github-icon {
+  .github-icon {
     position: absolute;
 
     top: 18px;
@@ -153,11 +154,11 @@
     transition: calc(var(--delay-animation) * 2) ease color;
   }
 
-  .item__github-icon:hover {
+  .github-icon:hover {
     color: var(--color-github-hover);
   }
 
-  .item__title {
+  .title {
     margin: 0;
     overflow: hidden;
 
@@ -167,11 +168,11 @@
     white-space: nowrap;
   }
 
-  .item__title:hover {
+  .title:hover {
     text-decoration: underline;
   }
 
-  .item__subtitle {
+  .subtitle {
     margin-top: 2px;
 
     font-size: 12px;
