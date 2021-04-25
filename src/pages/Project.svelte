@@ -1,12 +1,10 @@
 <script lang="ts">
   import { Circle2 as Spinner } from 'svelte-loading-spinners'
-
   import NotFound from './NotFound.svelte'
-
   import { projects } from '../lib/projects'
-  import type { names } from '../lib/projects'
+  import type { Name } from '../lib/projects'
 
-  export let name: names
+  export let name: Name
 
   const project = projects.find((project) => project.name === name)
 </script>
@@ -19,9 +17,9 @@
         {#await import('../components/Editor.svelte')}
           <Spinner />
         {:then { default: Editor }}
-          <svelte:component this={Editor} />
+          <svelte:component this={Editor} {project} />
         {:catch error}
-          <p>Something went wrong: {error.message}</p>
+          <p>Couldn't load Editor component. {error.message}</p>
         {/await}
       </div>
 

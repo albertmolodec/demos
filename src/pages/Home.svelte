@@ -3,16 +3,23 @@
   import Item from '../components/Item.svelte'
 </script>
 
-<h1>My demo projects</h1>
-<div class="grid">
-  {#each projects as project}
-    <Item name={project.name} />
-  {/each}
+<div class="homepage">
+  <h1>My demo projects</h1>
+  <div class="grid">
+    {#each projects as project}
+      <Item {project} />
+    {/each}
+  </div>
 </div>
 
 <style>
   h1 {
     margin-bottom: 2rem;
+  }
+
+  .homepage {
+    max-width: 1280px;
+    margin: 0 auto;
   }
 
   .grid {

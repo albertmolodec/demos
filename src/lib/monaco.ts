@@ -4,7 +4,7 @@ import cssWorker from 'monaco-editor/esm/vs/language/css/css.worker?worker'
 import htmlWorker from 'monaco-editor/esm/vs/language/html/html.worker?worker'
 import tsWorker from 'monaco-editor/esm/vs/language/typescript/ts.worker?worker'
 
-// Thanks to https://github.com/vitejs/vite/discussions/1791#discussioncomment-323543
+// https://github.com/vitejs/vite/discussions/1791#discussioncomment-323543
 export function getWorker(_workerId: string, label: string) {
   if (label === 'json') {
     return new jsonWorker()
