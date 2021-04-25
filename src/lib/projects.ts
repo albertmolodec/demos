@@ -1,12 +1,18 @@
+export interface File {
+  name: string
+  language: string
+}
+
 export interface Project {
-  name: names
+  name: Name
   label: string
   year?: number
   isBundled: boolean
   accentColor: string
+  files: File[]
 }
 
-export type names =
+export type Name =
   | 'build-react'
   | 'use-toggle'
   | 'web-component'
@@ -21,6 +27,16 @@ export const projects: Project[] = [
     year: 2021,
     isBundled: false,
     accentColor: '#202226',
+    files: [
+      {
+        name: 'index.jsx',
+        language: 'javascript',
+      },
+      {
+        name: 'didact.js',
+        language: 'javascript',
+      },
+    ],
   },
   {
     name: 'use-toggle',
@@ -28,6 +44,16 @@ export const projects: Project[] = [
     year: 2021,
     isBundled: false,
     accentColor: '#eeefef',
+    files: [
+      {
+        name: 'index.jsx',
+        language: 'javascript',
+      },
+      {
+        name: 'useToggle.js',
+        language: 'javascript',
+      },
+    ],
   },
   {
     name: 'web-component',
@@ -35,6 +61,16 @@ export const projects: Project[] = [
     year: 2021,
     isBundled: false,
     accentColor: '#ffff4c',
+    files: [
+      {
+        name: 'user-card.js',
+        language: 'javascript',
+      },
+      {
+        name: 'templates.js',
+        language: 'javascript',
+      },
+    ],
   },
   {
     name: 'vanilla-auth-form',
@@ -42,6 +78,7 @@ export const projects: Project[] = [
     year: 2019,
     isBundled: true,
     accentColor: '#e06395',
+    files: [],
   },
   {
     name: 'xsolla-summer-school',
@@ -49,5 +86,15 @@ export const projects: Project[] = [
     year: 2018,
     isBundled: false,
     accentColor: '#ff0858',
+    files: [
+      {
+        name: 'index.html',
+        language: 'html',
+      },
+      {
+        name: 'js/scripts.js',
+        language: 'javascript',
+      },
+    ],
   },
 ]

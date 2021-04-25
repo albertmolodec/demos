@@ -3,7 +3,7 @@
 
   import Home from './pages/Home.svelte'
   import Project from './pages/Project.svelte'
-  import NotFound from './pages/NotFound.svelte';
+  import NotFound from './pages/NotFound.svelte'
 </script>
 
 <div class="page">
@@ -14,14 +14,24 @@
     <Route path="/:name" let:params>
       <Project name={params.name} />
     </Route>
-    <Route component={NotFound}/>
+    <Route component={NotFound} />
   </Router>
 </div>
 
 <style>
+  :global(html),
+  :global(body) {
+    height: 100%;
+  }
+
+  :global(#app) {
+    height: 100%;
+    padding: 40px;
+  }
+
   .page {
-    font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-      Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+      'Helvetica Neue', sans-serif;
     height: 100%;
   }
 </style>
