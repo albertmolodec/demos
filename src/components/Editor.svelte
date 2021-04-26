@@ -44,22 +44,33 @@
   })
 </script>
 
-<ul class="tabs">
-  {#if project.files?.length}
-    {#each project.files as file}
-      <li>
-        <button class="tab" class:active={file.name === current?.name} on:click={() => changeTab(file)}
-          >{file.name}</button
-        >
-      </li>
-    {/each}
-  {:else}
-    No code found.
-  {/if}
-</ul>
-<div id="monaco" />
+<div class="editor">
+  <ul class="tabs">
+    {#if project.files?.length}
+      {#each project.files as file}
+        <li>
+          <button class="tab" class:active={file.name === current?.name} on:click={() => changeTab(file)}
+            >{file.name}</button
+          >
+        </li>
+      {/each}
+    {:else}
+      No code found.
+    {/if}
+  </ul>
+  <div id="monaco" />
+</div>
 
 <style>
+  .editor {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #monaco {
+    flex-grow: 1;
+  }
+  
   .tabs {
     display: flex;
 
