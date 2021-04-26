@@ -60,10 +60,6 @@
 <div id="monaco" />
 
 <style>
-  #monaco {
-    height: 100%;
-  }
-
   .tabs {
     display: flex;
 
