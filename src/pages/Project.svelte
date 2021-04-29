@@ -13,7 +13,7 @@
   <div class="project-page">
     <h1>{project.label}</h1>
     <div class="playground">
-      <div class="container">
+      <div class="editor">
         {#await import('../components/Editor.svelte')}
           <Spinner />
         {:then { default: Editor }}
@@ -23,7 +23,7 @@
         {/await}
       </div>
 
-      <div class="container">
+      <div class="view">
         <iframe
           src="/projects/{name}/{project.isBundled ? 'dist/' : ''}index.html"
           frameborder="0"
@@ -54,8 +54,12 @@
     flex-grow: 1;
   }
 
-  .container {
-    flex: 1 0 50%;
+  .editor {
+    flex: 1;
+  }
+  
+  .view {
+    flex: 2;
   }
 
   .project-iframe {
