@@ -45,8 +45,8 @@
 </script>
 
 <div class="editor">
-  <ul class="tabs">
-    {#if project.files?.length}
+  {#if project.files?.length}
+    <ul class="tabs">
       {#each project.files as file}
         <li>
           <button class="tab" class:active={file.name === current?.name} on:click={() => changeTab(file)}
@@ -54,10 +54,15 @@
           >
         </li>
       {/each}
-    {:else}
-      No code found.
-    {/if}
-  </ul>
+    </ul>
+  {:else}
+    <span>
+      No code found. Check the <a
+        href="https://github.com/albertmolodec/demos/tree/main/public/projects/{project.name}"
+        target="_blank">repo</a
+      >.</span
+    >
+  {/if}
   <div id="monaco" />
 </div>
 
@@ -67,11 +72,11 @@
     flex-direction: column;
     height: 100%;
   }
-  
+
   #monaco {
     flex-grow: 1;
   }
-  
+
   .tabs {
     display: flex;
 
