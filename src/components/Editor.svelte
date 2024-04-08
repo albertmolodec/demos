@@ -1,47 +1,49 @@
 <script lang="ts">
-  import { afterUpdate, onMount } from 'svelte'
-  import * as monaco from 'monaco-editor'
-  import { getWorker } from '../lib/monaco'
-  import type { File, Project } from '../lib/projects'
+import { afterUpdate, onMount } from "svelte";
+import * as monaco from "monaco-editor";
+import { getWorker } from "../lib/monaco";
+import type { File, Project } from "../lib/projects";
 
-  export let readOnly = true
-  export let project: Project
+export const readOnly = true;
+export let project: Project;
 
-  let editor: monaco.editor.IStandaloneCodeEditor
-  let current: File
-  const states = {}
+let editor: monaco.editor.IStandaloneCodeEditor;
+let current: File;
+const states = {};
 
-  window.MonacoEnvironment = { getWorker }
+window.MonacoEnvironment = { getWorker };
 
-  async function getCode(filename: string): Promise<string> {
-    const text = await (await fetch(`/projects/${project.name}/${filename}`)).text()
+async function getCode(filename: string): Promise<string> {
+	const text = await (
+		await fetch(`/projects/${project.name}/${filename}`)
+	).text();
 
-    return new Promise((resolve) => resolve(text))
-  }
+	return new Promise((resolve) => resolve(text));
+}
 
-  async function changeTab(file: File): Promise<void> {
-    const code = await getCode(file.name)
+async function changeTab(file: File): Promise<void> {
+	const code = await getCode(file.name);
 
-    current = file
-    states[current.name] = editor.saveViewState()
+	current = file;
+	states[current.name] = editor.saveViewState();
 
-    const model = monaco.editor.createModel(code, file.language)
-    editor.setModel(model)
-    editor.restoreViewState(states[current.name])
-    editor.focus()
-  }
+	const model = monaco.editor.createModel(code, file.language);
+	editor.setModel(model);
+	editor.restoreViewState(states[current.name]);
+	editor.focus();
+}
 
-  onMount(async () => {
-    if (!project.files?.length) return
+onMount(async () => {
+	if (!project.files?.length) return;
 
-    editor = monaco.editor.create(document.getElementById('monaco'), {
-      readOnly,
-      minimap: {
-        enabled: false,
-      },
-    })
-    changeTab(project.files[0])
-  })
+	editor = monaco.editor.create(document.getElementById("monaco"), {
+		readOnly,
+		minimap: {
+			enabled: false,
+		},
+	});
+	changeTab(project.files[0]);
+});
 </script>
 
 <div class="editor">
@@ -58,7 +60,7 @@
   {:else}
     <span>
       No code found. Check the <a
-        href="https://github.com/albertmolodec/demos/tree/main/public/projects/{project.name}"
+        href="https://github.com/kitcat-dev/demos/tree/main/public/projects/{project.name}"
         target="_blank">repo</a
       >.</span
     >

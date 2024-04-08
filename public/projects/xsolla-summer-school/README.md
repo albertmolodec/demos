@@ -1,7 +1,8 @@
 # Таблица транзакций
+
 Тестовое задание Frontend-потока на [Xsolla Summer School 2018](http://school.xsolla.com).
 
-https://demo.lbrt.me/xsolla-summer-school
+https://demo.kitcat.dev/xsolla-summer-school
 
 Автор: Альберт Абдульманов.
 

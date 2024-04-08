@@ -1,25 +1,25 @@
 {
-  "name": "vanilla-auth-form",
-  "version": "1.0.0",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build --base=/projects/vanilla-auth-form/dist/",
-    "serve": "vite preview"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/albertmolodec/vanilla-auth-form.git"
-  },
-  "author": "Albert Abdulmanov",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/albertmolodec/vanilla-auth-form/issues"
-  },
-  "homepage": "https://github.com/albertmolodec/vanilla-auth-form#readme",
-  "dependencies": {
-    "postcss-mixins": "^6.2.3",
-    "postcss-nested": "^4.2.1",
-    "postcss-preset-env": "^6.7.0",
-    "vite": "^2.1.5"
-  }
+	"name": "vanilla-auth-form",
+	"version": "1.0.0",
+	"scripts": {
+		"dev": "vite",
+		"build": "vite build --base=/projects/vanilla-auth-form/dist/",
+		"serve": "vite preview"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/kitcat-dev/vanilla-auth-form.git"
+	},
+	"author": "Albert Abdulmanov",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/kitcat-dev/vanilla-auth-form/issues"
+	},
+	"homepage": "https://github.com/kitcat-dev/vanilla-auth-form#readme",
+	"dependencies": {
+		"postcss-mixins": "^6.2.3",
+		"postcss-nested": "^4.2.1",
+		"postcss-preset-env": "^6.7.0",
+		"vite": "^2.1.5"
+	}
 }

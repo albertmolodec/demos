@@ -8,9 +8,9 @@ body {
 
 .container {
     display: grid;
-    grid-template-areas: 
-      "header header" 
-      "main aside" 
+    grid-template-areas:
+      "header header"
+      "main aside"
       "footer footer";
     grid-template-columns: 7fr 3fr;
     grid-template-rows: auto 1fr 50px;
@@ -37,7 +37,7 @@ footer {
     grid-area: footer;
 
     padding: 5px;
-    background-color: black;    
+    background-color: black;
 }
 
 
@@ -75,7 +75,7 @@ footer .author a:hover {
     height: 10%;
     display: flex;
     flex-direction: row;
-    align-items: flex-start;   
+    align-items: flex-start;
     justify-content: flex-start;
 }
 
@@ -96,7 +96,7 @@ footer .author a:hover {
     display: block;
     height: 90%;
     width: 150px;
-    overflow: hidden; 
+    overflow: hidden;
     overflow-y: scroll;
     list-style: none outside;
     padding: 0 10px;
@@ -127,22 +127,22 @@ footer .author a:hover {
     header .title {
         font-size: 1.2em;
     }
-    
+
     .container {
         grid-template-areas:
         "header"
         "main"
-        "aside"                
+        "aside"
         "footer";
-        
+
         grid-template-columns: 1fr;
         grid-template-rows:
         auto /* Header */
         3fr /* Main (table) */
-        2fr /* Aside (graphs) */        
+        2fr /* Aside (graphs) */
         auto; /* Footer */
     }
-  
+
     header,
     main,
     aside,
@@ -154,7 +154,7 @@ footer .author a:hover {
         flex-direction: column;
         align-items: flex-start;
         height: 200px;
-        padding: 1em; 
+        padding: 1em;
     }
 
     .table-actions .filter {

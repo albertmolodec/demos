@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Router, Route } from 'svelte-routing'
+import { Router, Route } from "svelte-routing";
 
-  import Home from './pages/Home.svelte'
-  import Project from './pages/Project.svelte'
-  import NotFound from './pages/NotFound.svelte'
+import Home from "./pages/Home.svelte";
+import Project from "./pages/Project.svelte";
+import NotFound from "./pages/NotFound.svelte";
 </script>
 
 <div class="page">

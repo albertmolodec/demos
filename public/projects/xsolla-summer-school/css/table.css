@@ -4,11 +4,11 @@
     height: 100%;
 }
 
-.table-content thead, 
-.table-content tbody, 
-.table-content tr, 
-.table-content td, 
-.table-content th { 
+.table-content thead,
+.table-content tbody,
+.table-content tr,
+.table-content td,
+.table-content th {
     display: block;
 }
 
@@ -101,7 +101,7 @@
     .table-content th {
         cursor: pointer;
     }
-  
+
     .table-content th:hover {
         border-bottom: 2px solid #ff005b;
         color: white;

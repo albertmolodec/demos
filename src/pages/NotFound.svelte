@@ -1,5 +1,5 @@
 <script>
-  import notFoundPicture from '../assets/404.png'
+import notFoundPicture from "../assets/404.png";
 </script>
 
 <div class="not-found-page">

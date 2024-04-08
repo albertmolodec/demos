@@ -2,14 +2,14 @@
 
 This page allows you create an account and send feedback.
 
-https://demo.lbrt.me/vanilla-auth-form
+https://demo.kitcat.dev/vanilla-auth-form
 
 ![Chewing Gum Preview](./src/images/preview.png)
 
 ## Install
 
 ```
-$ git clone git git@github.com:albertmolodec/demos.git
+$ git clone git git@github.com:kitcat-dev/demos.git
 $ cd demos/public/projects/vanilla-auth-form
 $ yarn
 $ yarn start

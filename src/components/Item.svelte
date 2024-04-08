@@ -1,10 +1,10 @@
 <script lang="ts">
-  import { link } from 'svelte-routing'
-  import type { Project, Name } from '../lib/projects'
+import { link } from "svelte-routing";
+import type { Project, Name } from "../lib/projects";
 
-  export let project: Project
+export let project: Project;
 
-  const { name, accentColor, year, label } = project
+const { name, accentColor, year, label } = project;
 </script>
 
 <article class="item" style="--color-accent: {accentColor}">
@@ -20,7 +20,7 @@
     {#if year}
       <div class="subtitle">{year}</div>
     {/if}
-    <a href="https://github.com/albertmolodec/demos/tree/source/public/projects/{name}" target="_blank">
+    <a href="https://github.com/kitcat-dev/demos/tree/source/public/projects/{name}" target="_blank">
       <svg height="24" class="github-icon" viewBox="0 0 16 16" version="1.1" width="24" aria-hidden="true">
         <path
           fill-rule="evenodd"

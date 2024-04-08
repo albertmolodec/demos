@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { projects } from '../lib/projects'
-  import Item from '../components/Item.svelte'
+import { projects } from "../lib/projects";
+import Item from "../components/Item.svelte";
 </script>
 
 <div class="homepage">

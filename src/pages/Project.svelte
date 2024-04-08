@@ -1,12 +1,12 @@
 <script lang="ts">
-  import { Circle2 as Spinner } from 'svelte-loading-spinners'
-  import NotFound from './NotFound.svelte'
-  import { projects } from '../lib/projects'
-  import type { Name } from '../lib/projects'
+import { Circle2 as Spinner } from "svelte-loading-spinners";
+import NotFound from "./NotFound.svelte";
+import { projects } from "../lib/projects";
+import type { Name } from "../lib/projects";
 
-  export let name: Name
+export let name: Name;
 
-  const project = projects.find((project) => project.name === name)
+const project = projects.find((project) => project.name === name);
 </script>
 
 {#if project}
@@ -57,7 +57,7 @@
   .editor {
     flex: 1;
   }
-  
+
   .view {
     flex: 2;
   }
