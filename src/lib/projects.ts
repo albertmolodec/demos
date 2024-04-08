@@ -101,13 +101,8 @@ export const projects: Project[] = [
 		name: "usa-map",
 		label: "USA map widget",
 		year: 2024,
-		isBundled: false,
+		isBundled: true,
 		accentColor: "#fff",
-		files: [
-			{
-				name: "index.html",
-				language: "html",
-			},
-		],
+		files: [],
 	},
 ];
