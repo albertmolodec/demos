@@ -97,4 +97,17 @@ export const projects: Project[] = [
 			},
 		],
 	},
+	{
+		name: "usa-map",
+		label: "USA map widget",
+		year: 2024,
+		isBundled: false,
+		accentColor: "#fff",
+		files: [
+			{
+				name: "index.html",
+				language: "html",
+			},
+		],
+	},
 ];
