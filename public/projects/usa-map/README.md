@@ -2,7 +2,7 @@
 
 Need to create a React application that would look something like this:
 
-![](./preview.png)
+![](https://raw.githubusercontent.com/kitcat-dev/demos/8a764b78236f124f602bfea7bc5db8fa0cfa5df0/public/projects/usa-map/preview.png)
 
 ## Requirements
 

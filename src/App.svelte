@@ -1,9 +1,11 @@
 <script lang="ts">
-import { Router, Route } from "svelte-routing";
+  import { Router, Route } from "svelte-routing";
 
-import Home from "./pages/Home.svelte";
-import Project from "./pages/Project.svelte";
-import NotFound from "./pages/NotFound.svelte";
+  import "fluent-svelte/theme.css";
+
+  import Home from "./pages/Home.svelte";
+  import Project from "./pages/Project.svelte";
+  import NotFound from "./pages/NotFound.svelte";
 </script>
 
 <div class="page">
@@ -30,8 +32,18 @@ import NotFound from "./pages/NotFound.svelte";
   }
 
   .page {
-    font-family: Avenir, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-      'Helvetica Neue', sans-serif;
+    font-family:
+      Avenir,
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Roboto,
+      Oxygen,
+      Ubuntu,
+      Cantarell,
+      "Open Sans",
+      "Helvetica Neue",
+      sans-serif;
     height: 100%;
   }
 </style>
