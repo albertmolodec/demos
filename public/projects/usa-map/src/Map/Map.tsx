@@ -45,7 +45,7 @@ const Legend = () => {
             backgroundColor: "rgb(204 238 222)",
           }}
         />
-        <span style={{ marginLeft: "4px" }}>0.2% - 0.6%</span>
+        <span style={{ marginLeft: "4px" }}>0.2% to 0.6%</span>
       </li>
       <li style={{ display: "inline-flex", alignItems: "center" }}>
         <div
@@ -56,7 +56,7 @@ const Legend = () => {
             backgroundColor: "rgb(102 203 155)",
           }}
         />
-        <span style={{ marginLeft: "4px" }}>0.6% - 1%</span>
+        <span style={{ marginLeft: "4px" }}>0.6% to 1%</span>
       </li>
       <li style={{ display: "inline-flex", alignItems: "center" }}>
         <div
@@ -67,7 +67,7 @@ const Legend = () => {
             backgroundColor: "rgb(6 168 87)",
           }}
         />
-        <span style={{ marginLeft: "4px" }}>1% - 3%</span>
+        <span style={{ marginLeft: "4px" }}>1% to 3%</span>
       </li>
       <li style={{ display: "inline-flex", alignItems: "center" }}>
         <div
@@ -150,6 +150,12 @@ export const Map = ({
             onMouseLeave={handleStateMouseLeave}
           />
         </Tooltip>
+        <path
+          fill="none"
+          stroke="#b0b0b0"
+          strokeWidth="1"
+          d="m 215,493 v 55 l 36,45 m -251,-168 h 147 l 68,68 h 85 l 54,54 v 46"
+        />
       </svg>
       <Legend />
     </>
