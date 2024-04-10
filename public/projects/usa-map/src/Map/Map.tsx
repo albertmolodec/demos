@@ -14,6 +14,76 @@ type Props = {
   >;
 };
 
+const Legend = () => {
+  return (
+    <ul
+      style={{
+        display: "inline-flex",
+        gap: "20px",
+        padding: 0,
+        width: "100%",
+        justifyContent: "center",
+      }}
+    >
+      <li style={{ display: "inline-flex", alignItems: "center" }}>
+        <div
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            backgroundColor: "#d0d0d0",
+          }}
+        />
+        <span style={{ marginLeft: "4px" }}>{"<"}0.2%</span>
+      </li>
+      <li style={{ display: "inline-flex", alignItems: "center" }}>
+        <div
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            backgroundColor: "rgb(204 238 222)",
+          }}
+        />
+        <span style={{ marginLeft: "4px" }}>0.2% - 0.6%</span>
+      </li>
+      <li style={{ display: "inline-flex", alignItems: "center" }}>
+        <div
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            backgroundColor: "rgb(102 203 155)",
+          }}
+        />
+        <span style={{ marginLeft: "4px" }}>0.6% - 1%</span>
+      </li>
+      <li style={{ display: "inline-flex", alignItems: "center" }}>
+        <div
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            backgroundColor: "rgb(6 168 87)",
+          }}
+        />
+        <span style={{ marginLeft: "4px" }}>1% - 3%</span>
+      </li>
+      <li style={{ display: "inline-flex", alignItems: "center" }}>
+        <div
+          style={{
+            width: "10px",
+            height: "10px",
+            borderRadius: "50%",
+            backgroundColor: "rgb(2 110 57)",
+          }}
+        />
+        <span style={{ marginLeft: "4px" }}>{">"}3%</span>
+      </li>
+    </ul>
+  );
+};
+
 export const Map = ({
   height,
   width,
@@ -31,54 +101,57 @@ export const Map = ({
   console.log(config);
 
   return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      height={height}
-      width={width}
-      viewBox="0 0 959 593"
-      {...props}
-    >
-      <defs>
-        <style>
-          {".state{fill:#d0d0d0}.border{stroke:#fff;stroke-width:1}"}
-        </style>
-      </defs>
-      <g>
-        {states.map((state) => (
-          <Tooltip
-            title={`${state.name}: ${config[state.code].percent}%`}
-            key={state.code}
-          >
-            <path
-              d={state.d}
-              className="state"
-              style={
-                config[state.code]
-                  ? { fill: config[state.code].color }
-                  : undefined
-              }
-              onMouseOver={handleStateMouseOver}
-              onMouseLeave={handleStateMouseLeave}
-            />
-          </Tooltip>
-        ))}
-      </g>
-      <g fill="none" className="border">
-        {borders.map((border) => (
-          <path key={border.stateA + "-" + border.stateB} d={border.d} />
-        ))}
-      </g>
-      <Tooltip title={`District of Columbia: ${config.dc.percent}%`}>
-        <circle
-          cx={801.6}
-          cy={252.1}
-          r={5}
-          style={config.dc ? { fill: config.dc.color } : undefined}
-          className="state border"
-          onMouseOver={handleStateMouseOver}
-          onMouseLeave={handleStateMouseLeave}
-        />
-      </Tooltip>
-    </svg>
+    <>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height={height}
+        width={width}
+        viewBox="0 0 959 593"
+        {...props}
+      >
+        <defs>
+          <style>
+            {".state{fill:#d0d0d0}.border{stroke:#fff;stroke-width:1}"}
+          </style>
+        </defs>
+        <g>
+          {states.map((state) => (
+            <Tooltip
+              title={`${state.name}: ${config[state.code].percent}%`}
+              key={state.code}
+            >
+              <path
+                d={state.d}
+                className="state"
+                style={
+                  config[state.code]
+                    ? { fill: config[state.code].color }
+                    : undefined
+                }
+                onMouseOver={handleStateMouseOver}
+                onMouseLeave={handleStateMouseLeave}
+              />
+            </Tooltip>
+          ))}
+        </g>
+        <g fill="none" className="border">
+          {borders.map((border) => (
+            <path key={border.stateA + "-" + border.stateB} d={border.d} />
+          ))}
+        </g>
+        <Tooltip title={`District of Columbia: ${config.dc.percent}%`}>
+          <circle
+            cx={801.6}
+            cy={252.1}
+            r={5}
+            style={config.dc ? { fill: config.dc.color } : undefined}
+            className="state border"
+            onMouseOver={handleStateMouseOver}
+            onMouseLeave={handleStateMouseLeave}
+          />
+        </Tooltip>
+      </svg>
+      <Legend />
+    </>
   );
 };
