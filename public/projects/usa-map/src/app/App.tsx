@@ -3,6 +3,8 @@ import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import { Box } from "@mui/material";
 import { UsaMapWithFilters } from "../widgets/UsaMapWithFilters.ts/UsaMapWithFilters";
+import { ErrorWidget } from "../widgets/ErrorWidget";
+import { EmptyWidget } from "../widgets/EmptyWidget";
 
 type TabPanelProps = {
   children?: React.ReactNode;
@@ -45,10 +47,10 @@ export function App() {
         <Tab label="Loaded data" value="success" />
       </Tabs>
       <CustomTabPanel value={activeTab} index="error">
-        Error
+        <ErrorWidget />
       </CustomTabPanel>
       <CustomTabPanel value={activeTab} index="empty">
-        Empty
+        <EmptyWidget />
       </CustomTabPanel>
       <CustomTabPanel value={activeTab} index="success">
         <UsaMapWithFilters />

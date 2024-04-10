@@ -23,6 +23,22 @@ const handlers = [
     });
   }),
 
+  http.get("/api/empty", async () => {
+    return HttpResponse.json([]);
+  }),
+
+  http.get("/api/authorized-only", async () => {
+    await delay(2500);
+
+    return HttpResponse.json(
+      {},
+      {
+        status: 401,
+        statusText: "You have to be authorized",
+      }
+    );
+  }),
+
   http.get("/api/gdp", async () => {
     await delay(3000);
 
