@@ -1,3 +1,4 @@
+import useSWR, { type Fetcher } from "swr";
 import React from "react";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
@@ -29,11 +30,7 @@ function CustomTabPanel(props: TabPanelProps) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
     </div>
   );
 }
@@ -74,6 +71,10 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 export function App() {
   const [value, setValue] = React.useState(2);
   const [age, setAge] = React.useState(20);
+  const { data, error, isLoading } = useSWR("/api/apples", (...args) =>
+    fetch(...args).then((res) => res.json())
+  );
+  console.log(data, error, isLoading);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);

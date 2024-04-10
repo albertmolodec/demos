@@ -24,7 +24,7 @@ export default {
 	plugins: [
 		new CopyPlugin({
 			patterns: [
-			  { from: "src/api.json" },
+			  { from: "src/mockServiceWorker.js" },
 			],
 		  }),
 		new HtmlWebpackPlugin({
