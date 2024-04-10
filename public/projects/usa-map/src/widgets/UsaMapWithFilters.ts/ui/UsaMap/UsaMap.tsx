@@ -1,24 +1,32 @@
 import * as React from "react";
 import Tooltip from "@mui/material/Tooltip";
-import { borders, states } from "./data";
-import { Legend } from "./Legend";
+
+import { borderCoordinates, stateCoordinates } from "./coordinates";
+import { Legend } from "../Legend";
+import type { StateCode } from "../../../../entities/state";
+
+export type UsaMapConfig = Partial<
+  Record<
+    StateCode,
+    {
+      color: string;
+      value: string;
+    }
+  >
+>;
 
 type Props = {
   height?: number;
   width?: number;
-  config?: Record<
-    string, // code of a state (lowercase)
-    {
-      color: string;
-      percent: number;
-    }
-  >;
+  legendItems: { label: string; color: string }[];
+  config?: UsaMapConfig;
 };
 
-export const Map = ({
+export const UsaMap = ({
   height,
   width,
   config = {},
+  legendItems,
   ...props
 }: Props & React.SVGProps<SVGSVGElement>) => {
   const handleStateMouseOver = (
@@ -44,17 +52,19 @@ export const Map = ({
           </style>
         </defs>
         <g>
-          {states.map((state) => (
+          {stateCoordinates.map((state) => (
             <Tooltip
-              title={`${state.name}: ${config[state.code].percent}%`}
               key={state.code}
+              title={`${state.name}${
+                state.code in config ? `: ${config[state.code]!.value}` : ""
+              }`}
             >
               <path
-                d={state.d}
+                d={state.coordinates}
                 className="state"
                 style={
-                  config[state.code]
-                    ? { fill: config[state.code].color }
+                  state.code in config
+                    ? { fill: config[state.code]!.color }
                     : undefined
                 }
                 onMouseOver={handleStateMouseOver}
@@ -64,37 +74,36 @@ export const Map = ({
           ))}
         </g>
         <g fill="none" className="border">
-          {borders.map((border) => (
-            <path key={border.stateA + "-" + border.stateB} d={border.d} />
+          {borderCoordinates.map((border) => (
+            <path
+              key={border.stateA + "-" + border.stateB}
+              d={border.coordinates}
+            />
           ))}
         </g>
-        <Tooltip title={`District of Columbia: ${config.dc.percent}%`}>
-          <circle
-            cx={801.6}
-            cy={252.1}
-            r={5}
-            style={config.dc ? { fill: config.dc.color } : undefined}
-            className="state border"
-            onMouseOver={handleStateMouseOver}
-            onMouseLeave={handleStateMouseLeave}
-          />
-        </Tooltip>
         <path
           fill="none"
           stroke="#b0b0b0"
           strokeWidth="1"
           d="m 215,493 v 55 l 36,45 m -251,-168 h 147 l 68,68 h 85 l 54,54 v 46"
         />
+        <Tooltip
+          title={`District of Columbia${
+            "dc" in config ? `: ${config.dc!.value}` : ""
+          }`}
+        >
+          <circle
+            cx={801.6}
+            cy={252.1}
+            r={5}
+            style={"dc" in config ? { fill: config.dc!.color } : undefined}
+            className="state border"
+            onMouseOver={handleStateMouseOver}
+            onMouseLeave={handleStateMouseLeave}
+          />
+        </Tooltip>
       </svg>
-      <Legend
-        items={[
-          { label: "<0.2%", color: "#d0d0d0" },
-          { label: "0.2% to 0.6%", color: "rgb(204 238 222)" },
-          { label: "0.6% to 1%", color: "rgb(102 203 155)" },
-          { label: "1% to 3%", color: "rgb(6 168 87)" },
-          { label: ">3%", color: "rgb(2 110 57)" },
-        ]}
-      />
+      <Legend items={legendItems} />
     </>
   );
 };

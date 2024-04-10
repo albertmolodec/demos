@@ -1,9 +1,9 @@
 import { createRoot } from "react-dom/client";
-import { App } from "./App";
+import { App } from "./app/App";
 import React from "react";
 
 async function enableMocking() {
-  const { worker } = await import("./mocks/browser");
+  const { worker } = await import("./app/mocks/browser");
 
   return process.env.NODE_ENV === "development"
     ? worker.start()
@@ -15,14 +15,12 @@ async function enableMocking() {
 }
 
 enableMocking().then(() => {
-  if (document) {
-    const node = document.getElementById("root");
-    if (node) {
-      const root = createRoot(node);
+  const node = document.getElementById("root");
+  if (node) {
+    const root = createRoot(node);
 
-      root.render(<App />);
-    } else {
-      document.body.innerHTML = "<h1>The root node has not been found</h1>";
-    }
+    root.render(<App />);
+  } else {
+    document.body.innerHTML = "<h1>The root node has not been found</h1>";
   }
 });

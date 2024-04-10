@@ -1,3 +1,5 @@
+export const USA_GDP_IN_2022 = 25_744_108;
+
 export type StateGDP = {
   name: string;
   gdp: number;
