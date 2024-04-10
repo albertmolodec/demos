@@ -1,19 +1,21 @@
 import { setupWorker } from "msw/browser";
 import { delay, http, HttpResponse } from "msw";
+import { population } from "./population";
 
 const handlers = [
-  http.get("/api/apples", async () => {
+  http.get("/api/population", async () => {
     await delay(1000);
 
-    return HttpResponse.json({
-      data: {
-        id: "1",
-        name: "Macintosh",
+    return HttpResponse.json(
+      {
+        data: population,
+        sum: population.reduce((acc, { population }) => acc + population, 0),
       },
-    });
+      {
+        status: 200,
+      }
+    );
   }),
 ];
-
-console.log("init mocks");
 
 export const worker = setupWorker(...handlers);

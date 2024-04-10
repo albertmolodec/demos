@@ -13,6 +13,7 @@ import {
   Typography,
   styled,
 } from "@mui/material";
+import type { StatePopulation } from "./mocks/population";
 
 type TabPanelProps = {
   children?: React.ReactNode;
@@ -72,15 +73,24 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 export function App() {
   const [value, setValue] = React.useState(2);
   const [age, setAge] = React.useState(20);
-  const { data, error, isLoading } = useSWR("/api/apples", (...args) =>
-    fetch(...args).then((res) => res.json())
-  );
-  console.log(data, error, isLoading);
-  console.log("render");
+  const fetcher: Fetcher<
+    {
+      data: StatePopulation[];
+      sum: number;
+    },
+    string
+  > = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error, isLoading } = useSWR("/api/population", fetcher);
 
   if (isLoading) {
     return <CircularProgress />;
   }
+
+  if (!data) {
+    return <p>Error</p>;
+  }
+
+  console.log(data, error);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
@@ -119,7 +129,29 @@ export function App() {
             <option value={30}>Thirty</option>
           </NativeSelect>
         </FormControl>
-        <Map />
+        <Map
+          config={Object.fromEntries(
+            data.data.map((item) => {
+              const percent = item.population / data.sum;
+              console.log(item.code, percent);
+              const color =
+                percent > 0.03
+                  ? "rgb(2 110 57)"
+                  : percent > 0.01
+                  ? "rgb(6 168 87)"
+                  : percent > 0.006
+                  ? "rgb(102 203 155)"
+                  : percent > 0.002
+                  ? "rgb(204 238 222)"
+                  : "#d0d0d0";
+
+              return [
+                item.code,
+                { color, percent: Number((percent * 100).toFixed(2)) },
+              ];
+            })
+          )}
+        />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>
         Nothing#4

@@ -5,10 +5,6 @@ import React from "react";
 async function enableMocking() {
   const { worker } = await import("./mocks/browser");
 
-  console.log("mocks are enabled", worker);
-
-  console.log("process.env.NODE_ENV", process.env.NODE_ENV);
-
   return process.env.NODE_ENV === "development"
     ? worker.start()
     : worker.start({
