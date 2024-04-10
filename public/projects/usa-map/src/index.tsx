@@ -7,7 +7,15 @@ async function enableMocking() {
 
   console.log("mocks are enabled", worker);
 
-  return worker.start();
+  console.log("process.env.NODE_ENV", process.env.NODE_ENV);
+
+  return process.env.NODE_ENV === "development"
+    ? worker.start()
+    : worker.start({
+        serviceWorker: {
+          url: "/projects/usa-map/dist/mockServiceWorker.js",
+        },
+      });
 }
 
 enableMocking().then(() => {

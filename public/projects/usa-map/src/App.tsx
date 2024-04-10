@@ -5,6 +5,7 @@ import Tab from "@mui/material/Tab";
 import { Map } from "./Map/Map";
 import {
   Box,
+  CircularProgress,
   FormControl,
   InputBase,
   InputLabel,
@@ -75,6 +76,11 @@ export function App() {
     fetch(...args).then((res) => res.json())
   );
   console.log(data, error, isLoading);
+  console.log("render");
+
+  if (isLoading) {
+    return <CircularProgress />;
+  }
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);

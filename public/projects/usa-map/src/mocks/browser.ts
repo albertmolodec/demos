@@ -1,9 +1,10 @@
 import { setupWorker } from "msw/browser";
-import { http, HttpResponse } from "msw";
+import { delay, http, HttpResponse } from "msw";
 
 const handlers = [
-  http.get("/api/apples", () => {
-    console.log("handle apples");
+  http.get("/api/apples", async () => {
+    await delay(1000);
+
     return HttpResponse.json({
       data: {
         id: "1",
