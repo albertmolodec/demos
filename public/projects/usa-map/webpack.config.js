@@ -1,5 +1,6 @@
 import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
+import CopyPlugin from 'copy-webpack-plugin'
 
 export default {
 	mode: 'production',
@@ -21,6 +22,11 @@ export default {
 		extensions: [".tsx", ".ts", ".js"],
 	},
 	plugins: [
+		new CopyPlugin({
+			patterns: [
+			  { from: "src/api.json" },
+			],
+		  }),
 		new HtmlWebpackPlugin({
 			template: "./index.html",
 		}),
