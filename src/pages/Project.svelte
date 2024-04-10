@@ -26,9 +26,11 @@
     <div class="playground">
       <div class="editor">
         <h1 class="heading">{project.label}</h1>
-        <div class="mode-switcher-wrapper">
-          <ModeSwitcher bind:mode />
-        </div>
+        {#if project.withReadme}
+          <div class="mode-switcher-wrapper">
+            <ModeSwitcher bind:mode />
+          </div>
+        {/if}
         {#if mode === "code"}
           {#await import("../components/Editor.svelte")}
             <Spinner />
@@ -61,6 +63,7 @@
   .project-page {
     width: 100%;
     height: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
   }
@@ -99,7 +102,6 @@
 
   .heading {
     padding-right: 140px;
-    margin-bottom: 60px;
   }
 
   .mode-switcher-wrapper {

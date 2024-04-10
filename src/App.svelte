@@ -8,8 +8,8 @@
   import NotFound from "./pages/NotFound.svelte";
 </script>
 
-<div class="page">
-  <Router>
+<Router>
+  <div class="page">
     <Route exact path="/">
       <Home />
     </Route>
@@ -17,8 +17,8 @@
       <Project name={params.name} />
     </Route>
     <Route component={NotFound} />
-  </Router>
-</div>
+  </div>
+</Router>
 
 <style>
   :global(html),
@@ -26,14 +26,12 @@
     height: 100%;
   }
 
-  :global(#app) {
-    height: 100%;
-    padding: 20px;
-  }
-
   .page {
     font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
       "Helvetica Neue", sans-serif;
-    height: 100%;
+    min-height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
   }
 </style>

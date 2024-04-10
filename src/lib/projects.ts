@@ -23,6 +23,33 @@ export type Name =
 
 export const projects: Project[] = [
   {
+    name: "vanilla-auth-form",
+    label: "Vanilla auth form",
+    year: 2019,
+    isBundled: true,
+    withReadme: true,
+    accentColor: "#e06395",
+    files: [],
+  },
+  {
+    name: "xsolla-summer-school",
+    label: "Xsolla summer school test task",
+    year: 2018,
+    isBundled: false,
+    withReadme: true,
+    accentColor: "#ff0858",
+    files: [
+      {
+        name: "index.html",
+        language: "html",
+      },
+      {
+        name: "js/scripts.js",
+        language: "javascript",
+      },
+    ],
+  },
+  {
     name: "build-react",
     label: "Build my own react",
     year: 2021,
@@ -72,33 +99,6 @@ export const projects: Project[] = [
       },
       {
         name: "templates.js",
-        language: "javascript",
-      },
-    ],
-  },
-  {
-    name: "vanilla-auth-form",
-    label: "Vanilla auth form",
-    year: 2019,
-    isBundled: true,
-    withReadme: true,
-    accentColor: "#e06395",
-    files: [],
-  },
-  {
-    name: "xsolla-summer-school",
-    label: "Xsolla summer school test task",
-    year: 2018,
-    isBundled: false,
-    withReadme: true,
-    accentColor: "#ff0858",
-    files: [
-      {
-        name: "index.html",
-        language: "html",
-      },
-      {
-        name: "js/scripts.js",
         language: "javascript",
       },
     ],
