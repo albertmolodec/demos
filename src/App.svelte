@@ -28,22 +28,12 @@
 
   :global(#app) {
     height: 100%;
-    padding: 40px;
+    padding: 20px;
   }
 
   .page {
-    font-family:
-      Avenir,
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Roboto,
-      Oxygen,
-      Ubuntu,
-      Cantarell,
-      "Open Sans",
-      "Helvetica Neue",
-      sans-serif;
+    font-family: Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
+      "Helvetica Neue", sans-serif;
     height: 100%;
   }
 </style>

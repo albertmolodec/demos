@@ -72,15 +72,29 @@
   .playground {
     display: flex;
     flex-grow: 1;
+    gap: 10px;
+
+    flex-direction: row;
+    @media (max-width: 1024px) {
+      flex-direction: column;
+    }
   }
 
   .editor {
     flex: 1;
     position: relative;
+
+    padding: 20px;
+    border: 1px solid rgb(224, 230, 237);
+    border-radius: 2px;
   }
 
   .view {
     flex: 2;
+
+    padding: 20px;
+    border: 1px solid rgb(224, 230, 237);
+    border-radius: 2px;
   }
 
   .heading {
