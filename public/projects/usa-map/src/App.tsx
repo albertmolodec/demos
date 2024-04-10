@@ -14,6 +14,7 @@ import {
   styled,
 } from "@mui/material";
 import type { StatePopulation } from "./mocks/population";
+import type { StateGDP } from "./mocks/gdp";
 
 type TabPanelProps = {
   children?: React.ReactNode;
@@ -72,7 +73,10 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
 
 export function App() {
   const [value, setValue] = React.useState(2);
-  const [age, setAge] = React.useState(20);
+  const [mode, setMode] = React.useState<"population" | "gdpPerCapita">(
+    "population"
+  );
+
   const fetcher: Fetcher<
     {
       data: StatePopulation[];
@@ -80,27 +84,37 @@ export function App() {
     },
     string
   > = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error, isLoading } = useSWR("/api/population", fetcher);
+  const fetcher2: Fetcher<
+    {
+      data: StateGDP[];
+      sum: number;
+    },
+    string
+  > = (...args) => fetch(...args).then((res) => res.json());
 
-  if (isLoading) {
+  const { data, error, isLoading } = useSWR("/api/population", fetcher);
+  const { data: data2, isLoading: isLoading2 } = useSWR("/api/gdp", fetcher2);
+
+  if (isLoading || isLoading2) {
     return <CircularProgress />;
   }
 
-  if (!data) {
+  if (!data || !data2) {
     return <p>Error</p>;
   }
 
-  console.log(data, error);
+  console.log(data);
+  console.log(data2);
 
   const handleTabChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);
   };
   const handleSelectChange = (event: { target: { value: string } }) => {
-    setAge(Number(event.target.value));
+    setMode(event.target.value as "population" | "gdpPerCapita");
   };
 
   return (
-    <div style={{ width: "1024px", fontFamily: "Roboto" }}>
+    <div style={{ fontFamily: "Roboto" }}>
       <Typography variant="h1">Pricing</Typography>
       <Tabs value={value} onChange={handleTabChange}>
         <Tab label="Quotes" />
@@ -117,40 +131,70 @@ export function App() {
       <CustomTabPanel value={value} index={2}>
         <Typography variant="h2">Win Percent</Typography>
         <FormControl sx={{ m: 1 }} variant="standard">
-          <InputLabel htmlFor="demo-customized-select-native">Age</InputLabel>
+          <InputLabel htmlFor="demo-customized-select-native">Mode</InputLabel>
           <NativeSelect
             id="demo-customized-select-native"
-            value={age}
+            value={mode}
             onChange={handleSelectChange}
             input={<BootstrapInput />}
           >
-            <option value={10}>Ten</option>
-            <option value={20}>Twenty</option>
-            <option value={30}>Thirty</option>
+            <option value="population">Population</option>
+            <option value="gdpPerCapita">GDP per capita</option>
           </NativeSelect>
         </FormControl>
         <Map
-          config={Object.fromEntries(
-            data.data.map((item) => {
-              const percent = item.population / data.sum;
-              console.log(item.code, percent);
-              const color =
-                percent > 0.03
-                  ? "rgb(2 110 57)"
-                  : percent > 0.01
-                  ? "rgb(6 168 87)"
-                  : percent > 0.006
-                  ? "rgb(102 203 155)"
-                  : percent > 0.002
-                  ? "rgb(204 238 222)"
-                  : "#d0d0d0";
+          config={
+            mode === "population"
+              ? Object.fromEntries(
+                  data.data.map((item) => {
+                    const percent = item.population / data.sum;
+                    console.log(item.code, percent);
+                    const color =
+                      percent > 0.03
+                        ? "rgb(2 110 57)"
+                        : percent > 0.01
+                        ? "rgb(6 168 87)"
+                        : percent > 0.006
+                        ? "rgb(102 203 155)"
+                        : percent > 0.002
+                        ? "rgb(204 238 222)"
+                        : "#d0d0d0";
 
-              return [
-                item.code,
-                { color, percent: Number((percent * 100).toFixed(2)) },
-              ];
-            })
-          )}
+                    return [
+                      item.code,
+                      { color, percent: Number((percent * 100).toFixed(2)) },
+                    ];
+                  })
+                )
+              : Object.fromEntries(
+                  data2.data.map((item) => {
+                    const statePopulationData = data.data.find(
+                      (state) => state.state === item.name
+                    );
+
+                    const gdpPerCapita = Number(
+                      (
+                        (item.gdp * 1_000_000) /
+                        statePopulationData!.population
+                      ).toFixed()
+                    );
+
+                    const color =
+                      gdpPerCapita > 90_000
+                        ? "rgb(2 110 57)"
+                        : gdpPerCapita > 70_000
+                        ? "rgb(6 168 87)"
+                        : gdpPerCapita > 50_000
+                        ? "rgb(102 203 155)"
+                        : "rgb(204 238 222)";
+
+                    return [
+                      statePopulationData!.code,
+                      { color, percent: gdpPerCapita },
+                    ];
+                  })
+                )
+          }
         />
       </CustomTabPanel>
       <CustomTabPanel value={value} index={3}>

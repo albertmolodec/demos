@@ -5,6 +5,7 @@ export type StatePopulation = {
   code: string;
 };
 
+// https://gist.github.com/yitzikc/0a1ef7fa6320250a7a3a8885ff9e91a1 with a cleanup
 export const population: StatePopulation[] = [
   {
     state: "Alabama",

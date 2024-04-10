@@ -1,6 +1,7 @@
 import * as React from "react";
 import Tooltip from "@mui/material/Tooltip";
 import { borders, states } from "./data";
+import { Legend } from "./Legend";
 
 type Props = {
   height?: number;
@@ -12,76 +13,6 @@ type Props = {
       percent: number;
     }
   >;
-};
-
-const Legend = () => {
-  return (
-    <ul
-      style={{
-        display: "inline-flex",
-        gap: "20px",
-        padding: 0,
-        width: "100%",
-        justifyContent: "center",
-      }}
-    >
-      <li style={{ display: "inline-flex", alignItems: "center" }}>
-        <div
-          style={{
-            width: "10px",
-            height: "10px",
-            borderRadius: "50%",
-            backgroundColor: "#d0d0d0",
-          }}
-        />
-        <span style={{ marginLeft: "4px" }}>{"<"}0.2%</span>
-      </li>
-      <li style={{ display: "inline-flex", alignItems: "center" }}>
-        <div
-          style={{
-            width: "10px",
-            height: "10px",
-            borderRadius: "50%",
-            backgroundColor: "rgb(204 238 222)",
-          }}
-        />
-        <span style={{ marginLeft: "4px" }}>0.2% to 0.6%</span>
-      </li>
-      <li style={{ display: "inline-flex", alignItems: "center" }}>
-        <div
-          style={{
-            width: "10px",
-            height: "10px",
-            borderRadius: "50%",
-            backgroundColor: "rgb(102 203 155)",
-          }}
-        />
-        <span style={{ marginLeft: "4px" }}>0.6% to 1%</span>
-      </li>
-      <li style={{ display: "inline-flex", alignItems: "center" }}>
-        <div
-          style={{
-            width: "10px",
-            height: "10px",
-            borderRadius: "50%",
-            backgroundColor: "rgb(6 168 87)",
-          }}
-        />
-        <span style={{ marginLeft: "4px" }}>1% to 3%</span>
-      </li>
-      <li style={{ display: "inline-flex", alignItems: "center" }}>
-        <div
-          style={{
-            width: "10px",
-            height: "10px",
-            borderRadius: "50%",
-            backgroundColor: "rgb(2 110 57)",
-          }}
-        />
-        <span style={{ marginLeft: "4px" }}>{">"}3%</span>
-      </li>
-    </ul>
-  );
 };
 
 export const Map = ({
@@ -97,8 +28,6 @@ export const Map = ({
   const handleStateMouseLeave = (
     event: React.MouseEvent<SVGPathElement, MouseEvent>
   ) => {};
-
-  console.log(config);
 
   return (
     <>
@@ -157,7 +86,15 @@ export const Map = ({
           d="m 215,493 v 55 l 36,45 m -251,-168 h 147 l 68,68 h 85 l 54,54 v 46"
         />
       </svg>
-      <Legend />
+      <Legend
+        items={[
+          { label: "<0.2%", color: "#d0d0d0" },
+          { label: "0.2% to 0.6%", color: "rgb(204 238 222)" },
+          { label: "0.6% to 1%", color: "rgb(102 203 155)" },
+          { label: "1% to 3%", color: "rgb(6 168 87)" },
+          { label: ">3%", color: "rgb(2 110 57)" },
+        ]}
+      />
     </>
   );
 };
