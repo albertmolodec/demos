@@ -1,4 +1,4 @@
-import type { StateCode } from "../../../../entities/state";
+import type { StateCode } from "../../../entities/state";
 
 type StateCoordinate = {
   coordinates: string;

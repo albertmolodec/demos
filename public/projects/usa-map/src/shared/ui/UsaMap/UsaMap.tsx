@@ -2,8 +2,8 @@ import * as React from "react";
 import Tooltip from "@mui/material/Tooltip";
 
 import { borderCoordinates, stateCoordinates } from "./coordinates";
-import { Legend } from "../Legend";
-import type { StateCode } from "../../../../entities/state";
+import { Legend } from "./Legend";
+import type { StateCode } from "../../../entities/state";
 
 export type UsaMapConfig = Partial<
   Record<
@@ -29,14 +29,6 @@ export const UsaMap = ({
   legendItems,
   ...props
 }: Props & React.SVGProps<SVGSVGElement>) => {
-  const handleStateMouseOver = (
-    event: React.MouseEvent<SVGPathElement, MouseEvent>
-  ) => {};
-
-  const handleStateMouseLeave = (
-    event: React.MouseEvent<SVGPathElement, MouseEvent>
-  ) => {};
-
   return (
     <>
       <svg
@@ -67,8 +59,6 @@ export const UsaMap = ({
                     ? { fill: config[state.code]!.color }
                     : undefined
                 }
-                onMouseOver={handleStateMouseOver}
-                onMouseLeave={handleStateMouseLeave}
               />
             </Tooltip>
           ))}
@@ -98,8 +88,6 @@ export const UsaMap = ({
             r={5}
             style={"dc" in config ? { fill: config.dc!.color } : undefined}
             className="state border"
-            onMouseOver={handleStateMouseOver}
-            onMouseLeave={handleStateMouseLeave}
           />
         </Tooltip>
       </svg>
