@@ -1,18 +1,10 @@
 import { CircularProgress } from "@mui/material";
 import React from "react";
-import useSWR, { type Fetcher } from "swr";
-
-class ErrorWithStatus extends Error {
-  status?: number;
-  statusText?: string;
-
-  constructor(message: string, options?: ErrorOptions) {
-    super(message, options);
-  }
-}
+import useSWRImmutable from "swr/immutable";
+import { ErrorWithStatus } from "../lib/ErrorWithStatus";
 
 export const ErrorWidget = () => {
-  const response = useSWR<any, ErrorWithStatus, string>(
+  const response = useSWRImmutable<any, ErrorWithStatus, string>(
     "/api/authorized-only",
     async (url) => {
       const res = await fetch(url);

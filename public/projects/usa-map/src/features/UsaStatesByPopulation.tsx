@@ -17,7 +17,10 @@ type Props = {};
 export const UsaStatesByPopulation = ({}: Props) => {
   const getPopulation: Fetcher<PopulationResponse, string> = (...args) =>
     fetch(...args).then((res) => res.json());
-  const population = useSWR("/api/population", getPopulation);
+  const population = useSWR("/api/population", getPopulation, {
+    revalidateOnFocus: false,
+    revalidateOnMount: true,
+  });
 
   const populationConfig: UsaMapConfig = React.useMemo(() => {
     if (!population.data) return {};

@@ -23,6 +23,15 @@ const handlers = [
     });
   }),
 
+  http.get("/api/gdp", async () => {
+    await delay(3000);
+
+    return HttpResponse.json<GdpResponse>({
+      items: gdp,
+      sum: USA_GDP_IN_2022,
+    });
+  }),
+
   http.get("/api/empty", async () => {
     return HttpResponse.json([]);
   }),
@@ -37,15 +46,6 @@ const handlers = [
         statusText: "You have to be authorized",
       }
     );
-  }),
-
-  http.get("/api/gdp", async () => {
-    await delay(3000);
-
-    return HttpResponse.json<GdpResponse>({
-      items: gdp,
-      sum: USA_GDP_IN_2022,
-    });
   }),
 ];
 

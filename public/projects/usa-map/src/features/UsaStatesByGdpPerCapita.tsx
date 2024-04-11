@@ -19,8 +19,14 @@ export const UsaStatesByGdpPerCapita = ({}: Props) => {
   const getGdp: Fetcher<GdpResponse, string> = (...args) =>
     fetch(...args).then((res) => res.json());
 
-  const gdp = useSWR("/api/gdp", getGdp);
-  const population = useSWR("/api/population", getPopulation);
+  const gdp = useSWR("/api/gdp", getGdp, {
+    revalidateOnFocus: false,
+    revalidateOnMount: true,
+  });
+  const population = useSWR("/api/population", getPopulation, {
+    revalidateOnFocus: false,
+    revalidateOnMount: true,
+  });
 
   const gdpPerCapitaConfig: UsaMapConfig = React.useMemo(() => {
     if (!population.data || !gdp.data) return {};

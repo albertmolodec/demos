@@ -10,14 +10,12 @@ import { BootstrapInput } from "../shared/ui/UsaMap/BootstrapInput";
 import { UsaStatesByPopulation } from "../features/UsaStatesByPopulation";
 import { UsaStatesByGdpPerCapita } from "../features/UsaStatesByGdpPerCapita";
 
-type Props = {};
+type Mode = "population" | "gdpPerCapita";
 
-export const UsaMapWithFilters = ({}: Props) => {
-  const [mode, setMode] = React.useState<"population" | "gdpPerCapita">(
-    "population"
-  );
+export const UsaMapWithFilters = () => {
+  const [mode, setMode] = React.useState<Mode>("population");
   const handleModeChange = (event: { target: { value: string } }) => {
-    setMode(event.target.value as "population" | "gdpPerCapita");
+    setMode(event.target.value as Mode);
   };
 
   const title =

@@ -1,8 +1,8 @@
 import React from "react";
-import useSWR, { type Fetcher } from "swr";
+import useSWRImmutable from "swr/immutable";
 
 export const EmptyWidget = () => {
-  const { data, isLoading } = useSWR("/api/empty", (...args) =>
+  const { data, isLoading } = useSWRImmutable("/api/empty", (...args) =>
     fetch(...args).then((res) => res.json())
   );
 
