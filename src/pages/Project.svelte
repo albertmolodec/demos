@@ -84,7 +84,9 @@
   }
 
   .editor {
-    flex: 1;
+    flex-grow: 1;
+    flex-basis: 0px;
+    flex-shrink: 0;
     position: relative;
 
     padding: 20px;
@@ -93,7 +95,9 @@
   }
 
   .view {
-    flex: 2;
+    flex-grow: 2;
+    flex-basis: 0px;
+    flex-shrink: 0;
 
     padding: 20px;
     border: 1px solid rgb(224, 230, 237);
