@@ -1,20 +1,26 @@
 {
-	"$schema": "https://json.schemastore.org/tsconfig",
-	"_version": "20.1.0",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "module": "ES2022",
+    "moduleResolution": "Bundler",
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
 
-	"compilerOptions": {
-		"jsx": "react",
-		"lib": ["es2023", "DOM"],
-		"module": "ES2022",
-		"target": "ES2022",
-		"useDefineForClassFields": true, // for mobx
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
 
-		"strict": true,
-		"esModuleInterop": true,
-		"skipLibCheck": true,
-		"moduleResolution": "Bundler"
-	},
-	"ts-node": {
-		"esm": true
-	}
+    "outDir": "dist",
+    "sourceMap": true,
+
+    "lib": ["es2022", "dom", "dom.iterable"],
+    "jsx": "react-jsx",
+
+    "useDefineForClassFields": true, // for mobx
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  }
 }
