@@ -1,14 +1,17 @@
 import { createRoot } from "react-dom/client";
 import React from "react";
 import { App } from "./App";
+import { createStore } from "./store";
 
 const node = document.getElementById("root");
 if (node) {
   const root = createRoot(node);
 
+  const store = createStore(3);
+
   root.render(
     <React.StrictMode>
-      <App />
+      <App store={store} />
     </React.StrictMode>
   );
 } else {

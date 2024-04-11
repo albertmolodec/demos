@@ -1,3 +1,22 @@
 .box {
-  background-color: red;
+  background-color: black;
+  width: 142px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 7px;
+  line-height: 16px;
+  color: white;
+}
+
+.control {
+  display: flex;
+}
+
+.separator {
+  height: 18px;
+  width: 1px;
+  background-color: white;
+  opacity: 50%;
+  margin-right: 5px;
 }
