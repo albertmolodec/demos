@@ -109,7 +109,16 @@ export const projects: Project[] = [
     year: 2024,
     isBundled: true,
     withReadme: true,
-    accentColor: "#fff",
+    accentColor: "#e6e6e6",
+    files: [],
+  },
+  {
+    name: "element-widget",
+    label: "Element widget",
+    year: 2024,
+    isBundled: true,
+    withReadme: true,
+    accentColor: "#e6e6e6",
     files: [],
   },
 ];

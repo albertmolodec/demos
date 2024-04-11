@@ -1,0 +1,20 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"_version": "20.1.0",
+
+	"compilerOptions": {
+		"jsx": "react",
+		"lib": ["es2023", "DOM"],
+		"module": "ES2022",
+		"target": "ES2022",
+		"useDefineForClassFields": true, // for mobx
+
+		"strict": true,
+		"esModuleInterop": true,
+		"skipLibCheck": true,
+		"moduleResolution": "Bundler"
+	},
+	"ts-node": {
+		"esm": true
+	}
+}

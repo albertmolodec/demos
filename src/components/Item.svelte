@@ -123,7 +123,6 @@
 
   .image {
     aspect-ratio: 16 / 9;
-    object-fit: contain;
     width: 100%;
 
     border: 1px solid var(--color-border);
