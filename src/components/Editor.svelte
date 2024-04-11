@@ -61,9 +61,9 @@
     </ul>
   {:else}
     <span>
-      No code found. Check the <a
+      The code can be found in the <a
         href="https://github.com/kitcat-dev/demos/tree/main/public/projects/{project.name}"
-        target="_blank">repo</a
+        target="_blank">repository</a
       >.</span
     >
   {/if}
