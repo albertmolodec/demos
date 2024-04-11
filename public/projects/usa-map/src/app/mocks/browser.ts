@@ -24,7 +24,7 @@ const handlers = [
   }),
 
   http.get("/api/gdp", async () => {
-    await delay(3000);
+    await delay(1200);
 
     return HttpResponse.json<GdpResponse>({
       items: gdp,
@@ -37,7 +37,7 @@ const handlers = [
   }),
 
   http.get("/api/authorized-only", async () => {
-    await delay(2500);
+    await delay(2000);
 
     return HttpResponse.json(
       {},
