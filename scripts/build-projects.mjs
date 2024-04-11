@@ -4,7 +4,6 @@ const projects = ["vanilla-auth-form", "usa-map", "element-widget"];
 
 async function build(project) {
   const cwd = `public/projects/${project}`;
-  await run("pnpm install", cwd);
   await run("pnpm run build", cwd);
 }
 
