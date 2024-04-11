@@ -5,6 +5,7 @@ import {
   FormControl,
   InputLabel,
   NativeSelect,
+  Typography,
 } from "@mui/material";
 import useSWR, { type Fetcher } from "swr";
 import type { GdpResponse, PopulationResponse } from "../../app/mocks/browser";
@@ -103,18 +104,33 @@ export const UsaMapWithFilters = ({}: Props) => {
 
   return (
     <div>
-      <FormControl sx={{ m: 1 }} variant="standard">
-        <InputLabel htmlFor="demo-customized-select-native">Mode</InputLabel>
-        <NativeSelect
-          id="demo-customized-select-native"
-          value={mode}
-          onChange={handleModeChange}
-          input={<BootstrapInput />}
-        >
-          <option value="population">Population</option>
-          <option value="gdpPerCapita">GDP per capita</option>
-        </NativeSelect>
-      </FormControl>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "end",
+          marginBottom: "20px",
+        }}
+      >
+        <Typography variant="h3">
+          {mode === "population"
+            ? "U.S. States Population Percentage"
+            : "GDP per Capita, by U.S. State"}
+        </Typography>
+
+        <FormControl sx={{ m: 1 }} variant="standard">
+          <InputLabel htmlFor="demo-customized-select-native">Mode</InputLabel>
+          <NativeSelect
+            id="demo-customized-select-native"
+            value={mode}
+            onChange={handleModeChange}
+            input={<BootstrapInput />}
+          >
+            <option value="population">Population</option>
+            <option value="gdpPerCapita">GDP per capita</option>
+          </NativeSelect>
+        </FormControl>
+      </div>
       <UsaMap
         legendItems={
           mode === "population"
