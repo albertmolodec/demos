@@ -1,6 +1,6 @@
-import { UIStoreContext } from "./StoreContext";
-import { UIStore } from "./UIStore";
-import { Widget } from "./Widget";
+import { UIStoreContext } from "./Widget/UIStoreContext";
+import { UIStore } from "./Widget/UIStore";
+import { Widget } from "./Widget/Widget";
 
 import "./reset.css";
 
