@@ -4,6 +4,22 @@ Need to create a React application that would look something like this:
 
 ![](https://raw.githubusercontent.com/kitcat-dev/demos/8a764b78236f124f602bfea7bc5db8fa0cfa5df0/public/projects/usa-map/preview.png)
 
+## Result
+
+👉 **https://demo.kitcat.dev/usa-map**
+
+- Stack: **React, Typescript, Material UI, Mock Service Worker (MSW), Webpack**.
+- There is 3 tabs with different views:
+  - The request was successful
+  - Server returned an error
+  - Server returned an empty data
+- The map on the first tab contains data about population and GDP per capita of the U.S. states. The view is switched through the select element.
+- The map is interactive. You can see the data for each state when you hover.
+- The data is real and up to date in 2022. It has been parsed via regular expressions and native JS methods. Sources:
+  1. https://commons.wikimedia.org/wiki/File:Blank_US_Map_(states_only).svg
+  2. https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_GDP
+  3. https://gist.github.com/yitzikc/0a1ef7fa6320250a7a3a8885ff9e91a1
+
 ## Requirements
 
 Key points:
