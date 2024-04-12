@@ -5,12 +5,14 @@ import { createStore } from "./store";
 
 import "./reset.css";
 import { ActionButton } from "./ActionButton";
+import { Todo, TodoList } from "./ui-state";
 
 type Props = {
   store: ReturnType<typeof createStore>;
+  list: TodoList;
 };
 
-export const App = observer(({ store }: Props) => {
+export const App = observer(({ store, list }: Props) => {
   console.log("render");
   return (
     <div
@@ -29,6 +31,27 @@ export const App = observer(({ store }: Props) => {
       >
         Increment
       </button>
+
+      <div>
+        Unfinished count: {list.unfinishedTodoCount}
+        {list.todos.map((todo) => (
+          <div key={todo.id}>
+            {todo.title} {todo.finished}
+          </div>
+        ))}
+        <button
+          type="button"
+          onClick={() => {
+            const newTodo = new Todo();
+            newTodo.title =
+              "Title " + parseInt(String(Math.random() * 100), 10);
+            newTodo.finished = false;
+            list.add(newTodo);
+          }}
+        >
+          Add todo
+        </button>
+      </div>
 
       <ClosableElement
         text="Element 5"
@@ -60,7 +83,7 @@ export const App = observer(({ store }: Props) => {
             Element 1
           </li>
           <li>
-            <input type="checkbox" checked />
+            <input type="checkbox" defaultChecked />
             Element 2
           </li>
           <li>

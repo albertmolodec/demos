@@ -8,7 +8,8 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@vitejs/plugin-react-swc": "3.6.0",
+		"@babel/plugin-proposal-decorators": "7.24.1",
+		"@vitejs/plugin-react": "4.2.1",
 		"mobx": "6.12.3",
 		"mobx-react-lite": "4.0.7",
 		"react": "18.2.0",

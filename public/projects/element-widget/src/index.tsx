@@ -2,6 +2,7 @@ import { createRoot } from "react-dom/client";
 import React from "react";
 import { App } from "./App";
 import { createStore } from "./store";
+import { list } from "./ui-state";
 
 const node = document.getElementById("root");
 if (node) {
@@ -11,7 +12,7 @@ if (node) {
 
   root.render(
     <React.StrictMode>
-      <App store={store} />
+      <App store={store} list={list} />
     </React.StrictMode>
   );
 } else {
