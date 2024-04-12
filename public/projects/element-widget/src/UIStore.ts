@@ -5,13 +5,22 @@ export class Todo {
   @observable accessor title = "";
   @observable accessor finished = false;
 
+  constructor(title?: string, finished?: boolean) {
+    if (title) {
+      this.title = title;
+    }
+    if (finished) {
+      this.finished = finished;
+    }
+  }
+
   @action
   toggle() {
     this.finished = !this.finished;
   }
 }
 
-export class TodoList {
+class TodoList {
   @observable accessor todos: Todo[] = [];
 
   constructor(todos: Todo[]) {
@@ -29,14 +38,9 @@ export class TodoList {
   }
 }
 
-const todo1 = new Todo();
-
-todo1.title = "Title1";
-todo1.finished = false;
-
-const todo2 = new Todo();
-
-todo2.title = "Title2";
-todo2.finished = true;
-
-export const list = new TodoList([todo1, todo2]);
+export class UIStore {
+  todoList = new TodoList([
+    new Todo("Title 1", false),
+    new Todo("Title 2", true),
+  ]);
+}
