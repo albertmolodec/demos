@@ -64,6 +64,10 @@
   gap: 16px;
 }
 
+.notAllowed * {
+  cursor: not-allowed;
+}
+
 .selectedItems {
   display: flex;
   flex-direction: row;

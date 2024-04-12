@@ -74,16 +74,18 @@ export const Dialog = observer(() => {
               {/* subscribe on modifications of the array from the store */}
               {() => {
                 const id = data[index]!;
+                const disabled =
+                  store.checkedIdsSet.size >= 3 && !store.checkedIdsSet.has(id);
                 return (
-                  <li className={s.listItem} style={style}>
+                  <li
+                    className={`${s.listItem} ${disabled ? s.notAllowed : ""}`}
+                    style={style}
+                  >
                     <input
                       id={`list-item-${id}`}
                       type="checkbox"
                       checked={store.checkedIdsSet.has(id)}
-                      disabled={
-                        store.checkedIdsSet.size >= 3 &&
-                        !store.checkedIdsSet.has(id)
-                      }
+                      disabled={disabled}
                       onChange={() => {
                         store.toggleItemInList(id);
                       }}
