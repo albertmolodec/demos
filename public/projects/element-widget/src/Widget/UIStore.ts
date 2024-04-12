@@ -1,9 +1,11 @@
 import { observable, computed, action } from "mobx";
 
-export type Id = number;
+export type Id = string;
 
-const initialIds: Id[] = new Array(300).fill(0).map((_, index) => index + 1);
-const initialSelectedIds = [5, 51];
+const initialIds: Id[] = new Array(300)
+  .fill(0)
+  .map((_, index) => `Element ${index + 1}`);
+const initialSelectedIds = [`Element 5`, `Element 51`];
 
 export class UIStore {
   allIds: Id[] = initialIds;
@@ -18,12 +20,12 @@ export class UIStore {
   @computed
   get visibleItems(): Id[] {
     return this.allIds
-      .filter((id) => String(id).includes(this.query))
-      .filter((id) => id > this.min);
+      .filter((id) => id.includes(this.query))
+      .filter((id) => parseInt(id.match(/\d+/)![0]) > this.min);
   }
 
   @action
-  toggleItemInList(id: number) {
+  toggleItemInList(id: Id) {
     if (this.checkedIdsSet.has(id)) {
       this.checkedIdsSet.delete(id);
     } else {
@@ -32,7 +34,7 @@ export class UIStore {
   }
 
   @action
-  deselectItem(id: number) {
+  deselectItem(id: Id) {
     this.selectedIdsSet.delete(id);
   }
 

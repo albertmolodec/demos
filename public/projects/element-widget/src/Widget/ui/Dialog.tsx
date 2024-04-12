@@ -81,7 +81,7 @@ export const Dialog = observer(() => {
                         store.toggleItemInList(id);
                       }}
                     />
-                    <label htmlFor={`list-item-${id}`}>Element {id}</label>
+                    <label htmlFor={`list-item-${id}`}>{id}</label>
                   </li>
                 );
               }}
@@ -93,7 +93,7 @@ export const Dialog = observer(() => {
       <div className={s.selectedItems}>
         {Array.from(store.checkedIdsSet).map((id) => (
           <ClosableElement
-            text={`Element ${id}`}
+            text={id}
             key={id}
             onClick={() => {
               store.toggleItemInList(id);
