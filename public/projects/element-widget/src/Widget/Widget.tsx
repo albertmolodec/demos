@@ -1,4 +1,4 @@
-import { FixedSizeList, type ListChildComponentProps } from "react-window";
+import { FixedSizeList } from "react-window";
 import { runInAction, toJS } from "mobx";
 import { observer, Observer } from "mobx-react-lite";
 import { ActionButton } from "./ui/ActionButton";
@@ -13,28 +13,26 @@ export const Widget = observer(() => {
 
   return (
     <div className={s.widget}>
-      You currently have {store.selectedItems.length} selected item(s).
-      {store.selectedItems.map((selectedItem) => (
-        <ClosableElement
-          text={selectedItem.name}
-          key={selectedItem.num}
-          onClick={(event) => {
-            console.log(event);
-          }}
-        />
-      ))}
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: 600,
-          height: 1000,
-          backgroundColor: "#373737",
-          padding: "20px",
-          color: "white",
-        }}
-      >
-        Select items
+      <h2 className={s.header}>Select items</h2>
+      <p className={s.description}>
+        You currently have {store.selectedItems.length} selected item(s).
+      </p>
+      <div className={s.selectedItemsContainer}>
+        {store.selectedItems.map((selectedItem) => (
+          <ClosableElement
+            text={selectedItem.name}
+            key={selectedItem.num}
+            onClick={(event) => {
+              console.log(event);
+            }}
+          />
+        ))}
+      </div>
+      <div className={s.actionsContainer}>
+        <ActionButton text="Change my choice" variant="green" />
+      </div>
+      <div className={s.selector}>
+        <h4 className={s.subheader}>Select items</h4>
         <br />
         Search
         <br />
