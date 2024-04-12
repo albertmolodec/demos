@@ -1,11 +1,17 @@
+import { FixedSizeList, type ListChildComponentProps } from "react-window";
 import { observer } from "mobx-react-lite";
 import { ActionButton } from "./ActionButton";
 import { ClosableElement } from "./ClosableElement";
 import { useUIStore } from "./StoreContext";
-import { Todo } from "./UIStore";
+import { Todo, type Item } from "./UIStore";
+
+const Row = ({ index, style, data }: ListChildComponentProps<Item[]>) => (
+  <div style={style}>{data[index]!.name}</div>
+);
 
 export const Widget = observer(() => {
   const store = useUIStore();
+  console.log("render");
   return (
     <div
       style={{
@@ -69,20 +75,15 @@ export const Widget = observer(() => {
         Search
         <br />
         Filter
-        <ul>
-          <li>
-            <input type="checkbox" />
-            Element 1
-          </li>
-          <li>
-            <input type="checkbox" defaultChecked />
-            Element 2
-          </li>
-          <li>
-            <input type="checkbox" />
-            Element 3
-          </li>
-        </ul>
+        <FixedSizeList
+          height={600}
+          width={500}
+          itemCount={store.items.length}
+          itemSize={30}
+          itemData={store.items}
+        >
+          {Row}
+        </FixedSizeList>
         Current selected items:
         <ClosableElement
           text="Element 5"

@@ -1,4 +1,5 @@
 import { observable, computed, action } from "mobx";
+import { initialElements } from "./data";
 
 export class Todo {
   id = Math.random();
@@ -38,9 +39,16 @@ class TodoList {
   }
 }
 
+export type Item = { name: string; checked: boolean };
+
 export class UIStore {
   todoList = new TodoList([
     new Todo("Title 1", false),
     new Todo("Title 2", true),
   ]);
+
+  @observable accessor items: Item[] = initialElements.map((name) => ({
+    name,
+    checked: false,
+  }));
 }
