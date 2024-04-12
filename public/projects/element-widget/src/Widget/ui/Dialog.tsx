@@ -28,7 +28,11 @@ export const Dialog = observer(() => {
   return (
     <div className={s.container}>
       <div className={s.close}>
-        <CloseButton onClick={store.closeDialog} />
+        <CloseButton
+          onClick={() => {
+            store.closeDialog();
+          }}
+        />
       </div>
       <h4 className={s.header}>Select items</h4>
       <div className={s.filters}>
