@@ -11,6 +11,7 @@ export const ActionButton = ({ text, onClick, variant }: Props) => {
     <button
       type="button"
       className={`${s.button} ${variant === "green" ? s.green : s.red}`}
+      onClick={onClick}
     >
       {text}
     </button>

@@ -22,25 +22,11 @@
 .selectedItemsContainer {
   display: flex;
   flex-direction: row;
+  align-items: flex-start;
   gap: 10px;
   margin-bottom: 15px;
 }
 
-.actionsContainer {
+.actions {
   margin-bottom: 30px;
-}
-
-.selector {
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  position: relative;
-  background-color: #373737;
-  color: white;
-  min-height: 500px;
-}
-
-.subheader {
-  font-weight: normal;
 }

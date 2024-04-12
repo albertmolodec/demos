@@ -3,7 +3,7 @@
   width: 142px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   padding: 7px 7px 7px 10px;
   line-height: 16px;
   color: white;

@@ -1,0 +1,84 @@
+.container {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+  background-color: #373737;
+  color: white;
+  min-height: 400px;
+  max-height: 600px;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.header {
+  font-weight: normal;
+  margin-bottom: 15px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 40px;
+  margin-bottom: 23px;
+}
+
+.filter {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 7px;
+}
+
+.select {
+  width: 150px;
+  height: 20px;
+  padding: 0px 7px;
+}
+
+.textInput {
+  width: 150xp;
+  height: 20px;
+}
+
+.list {
+  color: black;
+  background-color: white;
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.selectedItems {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.selectedItemsDescription {
+  margin-bottom: 15px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

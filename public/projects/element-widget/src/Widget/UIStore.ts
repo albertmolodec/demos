@@ -1,35 +1,68 @@
-import { observable, computed, action, toJS } from "mobx";
+import { observable, computed, action } from "mobx";
 
-export type Item = { name: string; num: number };
-export type ItemInList = Item & { checked: boolean };
+export type Id = number;
 
-const initialItems: Item[] = new Array(300)
-  .fill("Element")
-  .map((el, index) => ({
-    name: `${el} ${index + 1}`,
-    num: index + 1,
-  }));
+const initialIds: Id[] = new Array(300).fill(0).map((_, index) => index + 1);
+const initialSelectedIds = [5, 51];
 
 export class UIStore {
-  allItems: Item[] = initialItems;
+  allIds: Id[] = initialIds;
 
-  @observable accessor itemsInList: ItemInList[] = this.allItems.map(
-    (item) => ({
-      ...item,
-      checked: false,
-    })
-  );
+  @observable accessor isDialogOpened = false;
+  @observable accessor selectedIdsSet = new Set<Id>(initialSelectedIds);
 
-  @observable accessor selectedItems: Item[] = [
-    this.allItems[4]!,
-    this.allItems[50]!,
-  ];
+  @observable accessor query = "";
+  @observable accessor min = 0;
+  @observable accessor checkedIdsSet = new Set<Id>(initialSelectedIds);
+
+  @computed
+  get visibleItems(): Id[] {
+    return this.allIds
+      .filter((id) => String(id).includes(this.query))
+      .filter((id) => id > this.min);
+  }
 
   @action
-  toggleItemInList(index: number) {
-    const item = this.itemsInList[index];
-    if (!item) return;
+  toggleItemInList(id: number) {
+    if (this.checkedIdsSet.has(id)) {
+      this.checkedIdsSet.delete(id);
+    } else {
+      this.checkedIdsSet.add(id);
+    }
+  }
 
-    item.checked = !item.checked;
+  @action
+  deselectItem(id: number) {
+    this.selectedIdsSet.delete(id);
+  }
+
+  @action
+  openDialog() {
+    console.log("Open");
+    this.isDialogOpened = true;
+    this.reset();
+  }
+
+  @action
+  closeDialog() {
+    this.isDialogOpened = false;
+  }
+
+  @action
+  reset() {
+    this.checkedIdsSet = new Set(this.selectedIdsSet);
+    this.query = "";
+    this.min = 0;
+  }
+
+  @action
+  save() {
+    this.closeDialog();
+    this.selectedIdsSet = new Set(this.checkedIdsSet);
+  }
+
+  @action
+  cancel() {
+    this.closeDialog();
   }
 }
