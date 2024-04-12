@@ -1,29 +1,28 @@
 import { FixedSizeList, type ListChildComponentProps } from "react-window";
-import { toJS } from "mobx";
+import { runInAction, toJS } from "mobx";
 import { observer, Observer } from "mobx-react-lite";
 import { ActionButton } from "./ui/ActionButton";
 import { ClosableElement } from "./ui/ClosableElement";
 import { useUIStore } from "./UIStoreContext";
+import s from "./Widget.module.css";
 
 export const Widget = observer(() => {
   const store = useUIStore();
 
-  console.log("🎨");
+  console.log("Render");
 
   return (
-    <div
-      style={{
-        fontFamily: "Roboto",
-      }}
-    >
-      <ClosableElement
-        text="Element 5"
-        onClick={(event) => {
-          console.log(event);
-        }}
-      />
-      <ClosableElement text="Element 51" />
-
+    <div className={s.widget}>
+      You currently have {store.selectedItems.length} selected item(s).
+      {store.selectedItems.map((selectedItem) => (
+        <ClosableElement
+          text={selectedItem.name}
+          key={selectedItem.num}
+          onClick={(event) => {
+            console.log(event);
+          }}
+        />
+      ))}
       <div
         style={{
           display: "flex",
@@ -39,7 +38,26 @@ export const Widget = observer(() => {
         <br />
         Search
         <br />
-        Filter
+        <label htmlFor="amount-filter">Filter</label>
+        <select
+          id="amount-filter"
+          onChange={(event) => {
+            const min = parseInt(event.target.value, 10);
+
+            runInAction(() => {
+              store.itemsInList = store.allItems
+                .filter((item) => item.num > min)
+                .map((item) => ({ ...item, checked: false }));
+            });
+
+            // todo: fix lost checked state
+          }}
+        >
+          <option value="0">No filter</option>
+          <option value="10">{">"}10</option>
+          <option value="100">{">"}100</option>
+          <option value="200">{">"}200</option>
+        </select>
         <br />
         <FixedSizeList
           height={600}

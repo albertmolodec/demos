@@ -11,16 +11,23 @@ const initialItems: Item[] = new Array(300)
   }));
 
 export class UIStore {
-  @observable accessor allItems: Item[] = initialItems;
+  allItems: Item[] = initialItems;
 
-  @observable accessor itemsInList: ItemInList[] = initialItems.map((item) => ({
-    ...item,
-    checked: false,
-  }));
+  @observable accessor itemsInList: ItemInList[] = this.allItems.map(
+    (item) => ({
+      ...item,
+      checked: false,
+    })
+  );
+
+  @observable accessor selectedItems: Item[] = [
+    this.allItems[4]!,
+    this.allItems[50]!,
+  ];
 
   @action
   toggleItemInList(index: number) {
-    const item = this.itemsInList.find((item) => item.num === index + 1);
+    const item = this.itemsInList[index];
     if (!item) return;
 
     item.checked = !item.checked;
