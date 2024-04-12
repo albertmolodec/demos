@@ -13,6 +13,8 @@ As test data, 300 elements with sequence numbers will be suitable - `["Element 1
 - 300 elements are efficiently rendered using virtual scrolling technique. The library `react-window` is used for this purpose.
 - The state of the UI is stored in MobX store. It is described as a class with decorators (file `UIStore.ts`).
 
+Implementation time: **1 working day**.
+
 ## Requirements
 
 ### Logical conditions

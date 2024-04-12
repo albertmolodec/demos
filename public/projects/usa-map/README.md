@@ -20,6 +20,8 @@ Need to create a React application that would look something like this:
   2. https://en.wikipedia.org/wiki/List_of_U.S._states_and_territories_by_GDP
   3. https://gist.github.com/yitzikc/0a1ef7fa6320250a7a3a8885ff9e91a1
 
+Implementation time: **2 working days.**
+
 ## Requirements
 
 Key points:
