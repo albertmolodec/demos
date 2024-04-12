@@ -5,7 +5,6 @@ import { ClosableElement } from "./ui/ClosableElement";
 import { useUIStore } from "./UIStoreContext";
 import s from "./Widget.module.css";
 import { Dialog } from "./ui/Dialog";
-import { selectedItems } from "./ui/Dialog.module.css";
 
 export const Widget = observer(() => {
   const store = useUIStore();

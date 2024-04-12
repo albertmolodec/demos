@@ -42,18 +42,18 @@ export function App() {
   return (
     <div style={{ fontFamily: "Roboto" }}>
       <Tabs value={activeTab} onChange={handleTabChange}>
+        <Tab label="Loaded data" value="success" />
         <Tab label="Error" value="error" />
         <Tab label="Empty data" value="empty" />
-        <Tab label="Loaded data" value="success" />
       </Tabs>
+      <CustomTabPanel value={activeTab} index="success">
+        <UsaMapWithFilters />
+      </CustomTabPanel>
       <CustomTabPanel value={activeTab} index="error">
         <ErrorWidget />
       </CustomTabPanel>
       <CustomTabPanel value={activeTab} index="empty">
         <EmptyWidget />
-      </CustomTabPanel>
-      <CustomTabPanel value={activeTab} index="success">
-        <UsaMapWithFilters />
       </CustomTabPanel>
     </div>
   );

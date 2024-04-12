@@ -15,7 +15,7 @@ const CloseIcon = () => (
 );
 
 type Props = {
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const CloseButton = ({ onClick }: Props) => (

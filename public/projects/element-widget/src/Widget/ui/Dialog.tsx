@@ -50,6 +50,7 @@ export const Dialog = observer(() => {
           <select
             className={s.select}
             id="amount-filter"
+            value={store.min}
             onChange={handleSelectChange}
           >
             <option value="0">No filter</option>
@@ -62,7 +63,7 @@ export const Dialog = observer(() => {
       <div className={s.list}>
         <FixedSizeList
           height={246}
-          width={414}
+          width={430}
           itemCount={store.visibleItems.length}
           itemSize={27}
           itemData={store.visibleItems}
@@ -79,6 +80,10 @@ export const Dialog = observer(() => {
                       id={`list-item-${id}`}
                       type="checkbox"
                       checked={store.checkedIdsSet.has(id)}
+                      disabled={
+                        store.checkedIdsSet.size >= 3 &&
+                        !store.checkedIdsSet.has(id)
+                      }
                       onChange={() => {
                         store.toggleItemInList(id);
                       }}

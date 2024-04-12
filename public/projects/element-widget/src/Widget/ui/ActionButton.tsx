@@ -2,7 +2,7 @@ import s from "./ActionButton.module.css";
 
 type Props = {
   text: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
   variant: "green" | "red";
 };
 

@@ -3,7 +3,7 @@ import { CloseButton } from "./CloseButton";
 
 type Props = {
   text: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
 export const ClosableElement = ({ text, onClick }: Props) => {
