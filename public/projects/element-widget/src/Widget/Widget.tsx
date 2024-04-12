@@ -21,7 +21,7 @@ export const Widget = observer(() => {
       <div className={s.description}>
         You currently have {store.selectedIdsSet.size} selected item(s).
       </div>
-      <div className={s.selectedItemsContainer}>
+      <div className={s.selectedItems}>
         {Array.from(store.selectedIdsSet).map((id) => (
           <ClosableElement
             text={id}

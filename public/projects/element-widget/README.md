@@ -3,6 +3,8 @@
 Write a "widget" to select 3 elements from a certain list (initially set as an array).
 As test data, 300 elements with sequence numbers will be suitable - `["Element 1", "Element 2", "Element 3", ...]`.
 
+![Preview](https://github.com/kitcat-dev/demos/blob/e7387d8abc1d6cee8c77fe0c11157a73eec35fb3/public/projects/element-widget/preview.png)
+
 ## Logical conditions
 - A list of already selected items is displayed (no more than three).
 - By clicking on the "Change my choice" button, a dialog opens with a list of all elements (a scrollable list of fixed height), as well as a search field and filter.

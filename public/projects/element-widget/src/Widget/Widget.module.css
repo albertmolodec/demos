@@ -19,7 +19,7 @@
   color: #585858;
 }
 
-.selectedItemsContainer {
+.selectedItems {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
