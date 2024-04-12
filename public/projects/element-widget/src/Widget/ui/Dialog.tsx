@@ -11,8 +11,6 @@ import { runInAction } from "mobx";
 export const Dialog = observer(() => {
   const store = useUIStore();
 
-  console.log("Render dialog");
-
   const handleSelectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const min = parseInt(event.target.value, 10);
 

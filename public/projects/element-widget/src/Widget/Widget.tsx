@@ -10,11 +10,6 @@ import { selectedItems } from "./ui/Dialog.module.css";
 export const Widget = observer(() => {
   const store = useUIStore();
 
-  console.log("Render widget");
-
-  console.log("Selected:", store.selectedIdsSet.size, store.selectedIdsSet);
-  console.log("Checked:", store.checkedIdsSet.size, store.checkedIdsSet);
-
   return (
     <div className={s.widget}>
       <h2 className={s.header}>Select items</h2>

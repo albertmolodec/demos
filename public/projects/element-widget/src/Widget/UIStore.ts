@@ -1,6 +1,6 @@
 import { observable, computed, action } from "mobx";
 
-export type Id = string;
+type Id = string;
 
 const initialIds: Id[] = new Array(300)
   .fill(0)
@@ -40,7 +40,6 @@ export class UIStore {
 
   @action
   openDialog() {
-    console.log("Open");
     this.isDialogOpened = true;
     this.reset();
   }
