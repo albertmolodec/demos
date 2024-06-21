@@ -5,7 +5,7 @@ type Id = string;
 const initialIds: Id[] = new Array(300)
   .fill(0)
   .map((_, index) => `Element ${index + 1}`);
-const initialSelectedIds = [`Element 5`, `Element 51`];
+const initialSelectedIds = ["Element 5", "Element 51"];
 
 export class UIStore {
   allIds: Id[] = initialIds;
@@ -19,9 +19,17 @@ export class UIStore {
 
   @computed
   get visibleItems(): Id[] {
-    return this.allIds
-      .filter((id) => id.includes(this.query))
-      .filter((id) => parseInt(id.match(/\d+/)![0]) > this.min);
+    const visibleItems: string[] = [];
+
+    for (let id of this.allIds) {
+      const numericId = parseInt(id.match(/\d+/)![0], 10);
+
+      if (id.includes(this.query) && numericId > this.min) {
+        visibleItems.push(id);
+      }
+    }
+
+    return visibleItems;
   }
 
   @action
