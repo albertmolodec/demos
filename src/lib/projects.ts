@@ -121,13 +121,4 @@ export const projects: Project[] = [
     accentColor: "#e6e6e6",
     files: [],
   },
-  {
-    name: "chat",
-    label: "ChatGPT-like app",
-    year: 2024,
-    isBundled: true,
-    withReadme: false,
-    accentColor: "black",
-    files: [],
-  },
 ];
